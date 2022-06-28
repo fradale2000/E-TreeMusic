@@ -38,9 +38,10 @@ for (let i = 0; i < lista_prodotti.length; i++) {
     let prodotto = document.createElement("div");
     //aggiungo la classe song
     prodotto.classList.add("song");
-    prodotto.setAttribute("id",prod.IDProd);
     //aggiungo un'id
-    let immagine = document.createElement();
+    prodotto.setAttribute("id",prod.IDProd);
+    let immagine = document.createElement("img");
+    immagine.setAttribute("src",prod.scr)
     let titolo = document.createElement("span");
     titolo.innerHTML= `<span>${prod.Titolo}</span>`;
     let artista = document.createElement("span");
@@ -49,11 +50,13 @@ for (let i = 0; i < lista_prodotti.length; i++) {
     anno.innerHTML= `<span>${prod.Anno}</span>`;
     let costo = document.createElement("span");
     costo.innerHTML= `<span>${prod.Costo} €</span>`;
-    div.append(prodotto);
-    prodotto.append(titolo);
-    prodotto.append(artista);
-    prodotto.append(anno);
-    prodotto.append(costo);    
+    //appendo tutto nel div "div_prodotto"
+    div.appendChild(prodotto);
+    prodotto.appendChild(immagine);
+    prodotto.appendChild(titolo);
+    prodotto.appendChild(artista);
+    prodotto.appendChild(anno);
+    prodotto.appendChild(costo);    
 }
 // var a = { Topics: [] }; // define container with empty Topics array
 
