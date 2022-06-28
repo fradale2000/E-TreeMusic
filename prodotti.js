@@ -68,3 +68,25 @@ for (let i = 0; i < lista_prodotti.length; i++) {
 // a.Topics[62] = { topicId: 10, subTopicId: 62, topicName: "x", subTopicName: "x" };
 
 // alert(a.Topics[1].topicName + " - " + a.Topics[1].subTopicName);
+
+function add(){
+    cont_prod++;
+    const titolo = document.getElementById('Titolo');
+    const Art = document.getElementById('Artista');
+    const Anno = document.getElementById('Anno');
+    const Genere = document.getElementById('gen');
+    const Descrizione = document.getElementById('desc');
+    const Prezzo = document.getElementById('Prezzo');
+
+    let prod= {
+        "IDProd":cont_prod,
+        "Titolo":'canzone'+titolo,
+        "Artista":'artista'+Art,
+        "Anno":Anno,
+        "Genere":Genere,
+        "Descrizione":Descrizione,
+        "Costo":Prezzo,
+        "scr": "Immagini/TestLogo.png",             
+    }
+    
+}
