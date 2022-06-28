@@ -58,13 +58,13 @@ a {
 
  .song{
   height: 10%;
-  width: 33%;
+  width: 25%;
   border-radius: 25px;
   border-color: black;
   display: flex;
-  text-align: center;
-  margin: 3%;
-  padding: 2%;
+   text-align: center; 
+  margin: 5px;
+  padding: 3%;
   border: solid black 2px;
  }
 
