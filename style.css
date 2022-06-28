@@ -50,13 +50,15 @@ a {
     background-color: rgb(255, 255, 255);
  }
 
-#divprodotti{
+#div_prodotti{
   display: flex;
   text-align: center;
-
+  flex-wrap: wrap;
 }
 
  .song{
+  height: 10%;
+  width: 33%;
   border-radius: 25px;
   border-color: black;
   display: flex;
