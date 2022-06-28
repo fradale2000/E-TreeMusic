@@ -10,7 +10,6 @@ a {
 
 #body{
   margin: 0%;
-  font-family: ;
 }
 #navBar{
   display: flex;
@@ -73,8 +72,8 @@ a {
   text-align: center;
   align-items: center;
   flex-direction: column;
-  margin: 3%;
-  padding: 2%;
+  margin: 6%;
+  padding: 5%;
   border: solid 1px black;
  }
 
