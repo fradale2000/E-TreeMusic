@@ -10,4 +10,27 @@ li {
     padding: 8px;
     background-color: #dddddd;
   }
-  
+
+#body{
+  margin: 0%;
+}
+#navBar{
+  display: flex;
+  top: 0px;
+  justify-content:space-between;
+  height: 10%;
+  position: sticky;
+  background-color: black;
+
+}
+
+#logop{
+  height: 50px;
+  weight:50px ;
+}
+#home{
+  color: #33ee46;
+}
+#carrello{
+  color: #33ee46;
+}
