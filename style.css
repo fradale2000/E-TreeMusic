@@ -52,11 +52,18 @@ a {
 
 #divprodotti{
   display: flex;
+  text-align: center;
+
 }
 
  .song{
   border-radius: 25px;
   border-color: black;
+  display: flex;
+  text-align: center;
+  margin: 3%;
+  padding: 2%;
+  border: solid black 2px;
  }
 
  /* .navbar{
