@@ -1,13 +1,29 @@
-li {
-    display: inline;
-  }
   li {
+    display: inline;
     float: left;
   }
   
-  a {
+a {
     display: block;
     padding: 8px;
     background-color: #dddddd;
   }
-  
+
+ ul{ list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+ }
+
+ .navbar{
+    position: relative;
+    overflow: hidden;
+    height: 50%;
+    margin-top: 1%;
+    padding-top: 0%;}
+
+    li a:hover {
+        background-color: rgb(188, 186, 186);
+      }
