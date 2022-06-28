@@ -26,11 +26,11 @@ for (let i = 0; i < 10; i++) {
     cont_artista ++;
     cont_tot ++;
 }
-localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
+// localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
 console.log(lista_prodotti);
 
-for (let i = 10; i <= localStorage.length; i--) {
-    var prod = JSON.parse(localStorage.getItem(localStorage.key(i)))
+for (let i = 0; i < lista_prodotti.length; i++) {
+    var prod = lista_prodotti[i];   
     console.log(prod);
     let prodotto = document.createElement("div");
     prodotto.classList.add("song");
@@ -38,9 +38,15 @@ for (let i = 10; i <= localStorage.length; i--) {
     titolo.innerHTML= `<span>Titolo : ${prod.Titolo}</span>`;
     let artista = document.createElement("span");
     artista.innerHTML= `<span>Artista : ${prod.Artista}</span>`;
+    let anno = document.createElement("span");
+    anno.innerHTML= `<span>Anno : ${prod.Anno}</span>`;
+    let costo = document.createElement("span");
+    costo.innerHTML= `<span>Costo : ${prod.Costo} €</span>`;
     div.append(prodotto);
     prodotto.append(titolo);
-    prodotto.append(artista);    
+    prodotto.append(artista);
+    prodotto.append(anno);
+    prodotto.append(costo);    
 }
 // var a = { Topics: [] }; // define container with empty Topics array
 
