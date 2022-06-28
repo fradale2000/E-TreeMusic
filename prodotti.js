@@ -32,18 +32,20 @@ for (let i = 0; i < 10; i++) {
 localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
 console.log(lista_prodotti);
 
-for (let i = cont; i <= localStorage.length; i--) {
+for (let i = 10; i <= localStorage.length; i--) {
     var prod = JSON.parse(localStorage.getItem(localStorage.key(i)))
     console.log(prod);
     let prodotto = document.createElement("div");
+    div.classList.add("songs");
     let titolo = document.createElement("span");
-    titolo.innerHTML= `<span>Titolo : ${prod}</span>`;
+    titolo.innerHTML= `<span>Titolo : ${prod.Titolo}</span>`;
+    titolo.classList.add("songs");
     let artista = document.createElement("span");
-    artista.innerHTML= `<span>Artista : ${prod}</span>`;
+    artista.innerHTML= `<span>Artista : ${prod.Artista}</span>`;
+    artista.classList.add("songs");
     div.append(prodotto);
     prodotto.append(titolo);
-    prodotto.append(artista);
-    
+    prodotto.append(artista);    
 }
 // var a = { Topics: [] }; // define container with empty Topics array
 
