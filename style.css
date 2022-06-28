@@ -30,6 +30,7 @@ a {
   /* color: #33ee46;*/
   color: black;
   margin-left: 1%; 
+  margin-top: 8px;
 }
 #home:hover{
   color: red;
@@ -60,9 +61,9 @@ a {
   /* 
   border-color: black;
   display: flex;
-  text-align: center;
-  margin: 3%;
-  padding: 2%;
+   text-align: center; 
+  margin: 5px;
+  padding: 3%;
   border: solid black 2px;
   align-items: center;
   justify-content: center; */
