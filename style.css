@@ -1,12 +1,11 @@
-  li {
-    display: inline;
-    float: left;
-  }
+
   
 a {
-    display: block;
+     display: block; 
     padding: 8px;
-    background-color: #dddddd;
+    color: inherit;
+    text-decoration: none;
+    text-align: center;
   }
 
 #body{
@@ -49,6 +48,7 @@ a {
     justify-content: center;
     background-color: rgb(255, 255, 255);
  }
+  
 
  /* .navbar{
     position: relative;
