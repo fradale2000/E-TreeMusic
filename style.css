@@ -8,8 +8,12 @@ a {
     text-align: center;
   }
 
+  #add{
+    text-align: center;
+  }
 #body{
   margin: 0%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #navBar{
   display: flex;
@@ -55,6 +59,7 @@ a {
   display: flex;
   text-align: center;
   flex-wrap: wrap;
+  margin: 0 auto;
 }
 
  .song{
@@ -63,9 +68,9 @@ a {
   text-align: center;
   align-items: center;
   flex-direction: column;
-  margin: 6%;
   padding: 5%;
   border: solid 1px black;
+  margin: 6% auto auto;
  }
 
  /* .navbar{
