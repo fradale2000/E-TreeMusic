@@ -18,8 +18,8 @@ a {
   justify-content:space-between;
   height: 10%;
   position: sticky;
-  background-color: black;
-
+  /* background-color: black; */
+  background-color: #2ece4b;;
 }
 
 #logop{
@@ -27,10 +27,20 @@ a {
   weight:50px ;
 }
 #home{
-  color: #33ee46;
+  /* color: #33ee46;*/
+  color: black;
+  margin-left: 1%; 
+}
+#home:hover{
+  color: red;
 }
 #carrello{
-  color: #33ee46;
+  /* color: #33ee46; */
+  color: black;
+  margin-right: 1%;
+}
+#carrello:hover{
+  color: red;
 }
  ul{ list-style-type: none;
     margin: 0;
@@ -40,7 +50,7 @@ a {
     background-color: rgb(255, 255, 255);
  }
 
- .navbar{
+ /* .navbar{
     position: relative;
     overflow: hidden;
     height: 50%;
@@ -49,4 +59,4 @@ a {
 
     li a:hover {
         background-color: rgb(188, 186, 186);
-      }
+      } */
