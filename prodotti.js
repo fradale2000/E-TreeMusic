@@ -34,6 +34,7 @@ for (let i = 0; i < lista_prodotti.length; i++) {
     console.log(prod);
     let prodotto = document.createElement("div");
     prodotto.classList.add("song");
+    prodotto.setAttribute("id",prod.IDProd);
     let titolo = document.createElement("span");
     titolo.innerHTML= `<span>Titolo : ${prod.Titolo}</span>`;
     let artista = document.createElement("span");
