@@ -30,6 +30,7 @@ a {
   /* color: #33ee46;*/
   color: black;
   margin-left: 1%; 
+  margin-top: 8px;
 }
 #home:hover{
   color: red;
