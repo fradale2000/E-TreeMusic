@@ -1,6 +1,5 @@
 // by fradale2000
 var modal = document.getElementById("myModal");
-modal.style.display = "block";
 window.onclick = function(event) 
 {
     if (event.target == modal) 
@@ -50,10 +49,10 @@ for (let i = 0; i < lista_prodotti.length; i++) {
     //aggiungo un'id
     prodotto.setAttribute("id",prod.IDProd);
     prodotto.addEventListener("click", () => {
-        modal.style.display = "block";
         let cazzata = document.createElement("span");
         cazzata.innerHTML = "porcaputtana";
-        modal.appendChild(cazzata);
+        modal.append(cazzata);
+        modal.style.display = "block";
     });
     let immagine = document.createElement("img");
     immagine.setAttribute("src",prod.scr)
