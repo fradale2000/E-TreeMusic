@@ -7,7 +7,7 @@ window.onclick = function(event)
       modal.style.display = "none";
     }
 }
-function bab(){
+function caricamento(){
     localStorage.clear();
 //vari contatori per for oppure crezione di oggetti
 var cont = localStorage.length;
@@ -52,9 +52,10 @@ for (let i = 0; i < lista_prodotti.length; i++) {
     //aggiungo un'id
     prodotto.setAttribute("id",prod.IDProd);
     prodotto.addEventListener("click", () => {
+        let div_desc_prod = document.getElementById("div_desc_prod");
         let cazzata = document.createElement("span");
         cazzata.innerHTML = "porcaputtana";
-        modal.appendChild(cazzata);
+        div_desc_prod.appendChild(cazzata);
         modal.style.display = "block";
     });
     let immagine = document.createElement("img");
