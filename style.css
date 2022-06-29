@@ -94,7 +94,28 @@ a {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  height: 80%;
+  border-radius: 25px;
 }
+.modal-div_desc_prod {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 6%;
+  padding: 6%;
+}
+.modal-div_desc_prod-content {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 3%;
+  padding: 3%;
+}
+
  /* .navbar{
     position: relative;
     overflow: hidden;
