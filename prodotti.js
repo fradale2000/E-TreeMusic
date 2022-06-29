@@ -59,8 +59,9 @@ function caricamento(){
     //ciclo per creare tutti gli oggetti nella pagina in maniera dinamica
     for (let i = 0; i < localStorage.length; i++) {
         if(localStorage.getItem('song_'+i)<lista_prodotti.length){
-            continue}
-            else{
+            continue
+        }
+        else{
             var prod = JSON.parse(localStorage.getItem("song_"+i));   
             console.log(prod);
             //creo un div per inserire la canzone in maniera dinamica
@@ -136,8 +137,9 @@ function caricamento(){
             prodotto.appendChild(titolo);
             prodotto.appendChild(artista);
             prodotto.appendChild(anno);
-            prodotto.appendChild(costo);    
-        }}
+            prodotto.appendChild(costo);   
+        }
+    }
 }
 // var a = { Topics: [] }; // define container with empty Topics array
 
