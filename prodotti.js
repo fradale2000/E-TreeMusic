@@ -171,16 +171,16 @@ function caricamento(){
 
 function add(){
     cont_prod = localStorage.length;
-    const titolo = document.getElementById('Titolo').value;
-    const Art = document.getElementById('Artista').value;
-    const Anno = document.getElementById('Anno').value;
-    const Genere = document.getElementById('gen').value;
-    const Descrizione = document.getElementById('desc').value;
-    const Prezzo = document.getElementById('Prezzo').value;
+    let titolo = document.getElementById('Titolo').value;
+    let Art = document.getElementById('Artista').value;
+    let Anno = document.getElementById('Anno').value;
+    let Genere = document.getElementById('gen').value;
+    let Descrizione = document.getElementById('desc').value;
+    let Prezzo = document.getElementById('Prezzo').value;
 
     let new_prod= {
         "IDProd":cont_prod,
-        "Titolo canzone" : titolo,
+        "Titolo" : titolo,
         "Artista": Art,
         "Anno":Anno,
         "Genere":Genere,
