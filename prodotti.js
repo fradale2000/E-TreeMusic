@@ -13,7 +13,7 @@ window.onclick = function(event)
       modal.style.display = "none";
     }
 }
-function caricamento(){
+function caricamento(){           
     let cont_new = 0;
     while (localStorage.getItem('song_'+cont_new)!= null){
         lista_prodotti.push(JSON.parse(localStorage.getItem('song_'+cont_new)));
@@ -25,32 +25,37 @@ function caricamento(){
 
 var div = document.getElementById("div_prodotti");
 //creo un tot di oggetti tramite for
-// for (let i = 0; i < 10; i++) {
-//     let prod= {
-//         "IDProd":cont_prod,
-//         "Titolo":'canzone'+cont_canzone,
-//         "Artista":'artista'+cont_artista,
-//         "Anno":2020,
-//         "Genere":'rap',
-//         "Descrizione":'desc.',
-//         "Costo":3.50,
-//         "scr": "Immagini/TestLogo.png",             
-//     }
-//     //salvo tutto nel localstorage
-//     localStorage.setItem("song_" +cont_tot,JSON.stringify(prod));
-//     // localStorage.setItem("carello" +cont_tot,JSON.stringify(carello));
-//     //  lista_prodotti.push(prod);
-//     cont_prod ++;
-//     cont_canzone ++;
-//     cont_artista ++;
-//     cont_tot ++;
-// }
+for (let i = 0; i < 2; i++) {
+    
+    let prod= {
+        "IDProd":cont_prod,
+        "Titolo":'canzone'+cont_canzone,
+        "Artista":'artista'+cont_artista,
+        "Anno":2020,
+        "Genere":'rap',
+        "Descrizione":'desc.',
+        "Costo":3.50,
+        "scr": "Immagini/TestLogo.png",             
+    }
+    
+    //salvo tutto nel localstorage
+    localStorage.setItem("song_" +cont_tot,JSON.stringify(prod));
+    // localStorage.setItem("carello" +cont_tot,JSON.stringify(carello));
+    lista_prodotti.push(prod);
+    cont_prod ++;
+    cont_canzone ++;
+    cont_artista ++;
+    cont_tot ++;
+}
 
 // localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
 console.log(lista_prodotti);
 //ciclo per creare tutti gli oggetti nella pagina in maniera dinamica
 for (let i = 0; i < lista_prodotti.length; i++) {
-    var prod = lista_prodotti[i];   
+    if(localStorage.getItem('song_'+i)<lista_prodotti.length){
+        continue
+    }else{
+    let prod = lista_prodotti[i];   
     console.log(prod);
     //creo un div per inserire la canzone in maniera dinamica
     let prodotto = document.createElement("div");
@@ -82,7 +87,7 @@ for (let i = 0; i < lista_prodotti.length; i++) {
     prodotto.appendChild(artista);
     prodotto.appendChild(anno);
     prodotto.appendChild(costo);    
-}
+}}
 }
 // var a = { Topics: [] }; // define container with empty Topics array
 
