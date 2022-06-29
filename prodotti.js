@@ -5,6 +5,7 @@ var cont_canzone = 0;
 var cont_artista = 0;
 var cont_tot = 0;
 var lista_prodotti= [];
+var carello = [];
 var modal = document.getElementById("myModal");
 var div_desc_prod = document.getElementById("div_desc_prod");
 window.onclick = function(event) 
@@ -86,28 +87,36 @@ function caricamento(){
 
                 //artista
                 let artista = document.createElement("span");
-                artista.innerHTML= `<span>Artista:${prodotto.children[2].innerHTML}</span>`;
+                artista.innerHTML= ` Artista:${prodotto.children[2].innerHTML} `;
                 artista.classList.add("modal-div_desc_prod-content");
 
                 //anno
                 let anno = document.createElement("span");
-                anno.innerHTML= `<span>Anno:${prodotto.children[3].innerHTML}</span>`;
+                anno.innerHTML= ` Anno:${prodotto.children[3].innerHTML} `;
                 anno.classList.add("modal-div_desc_prod-content");
 
                 //genere
                 let genere = document.createElement("span");
-                genere.innerHTML= `<span>Genere:${current_prod.Genere}</span>`;
+                genere.innerHTML= ` Genere:${current_prod.Genere} `;
                 genere.classList.add("modal-div_desc_prod-content");
 
                 //descrizione
                 let descrizione = document.createElement("span");
-                descrizione.innerHTML= `<span>Descrizione:${current_prod.Descrizione}</span>`;
+                descrizione.innerHTML= ` Descrizione:${current_prod.Descrizione} `;
                 descrizione.classList.add("modal-div_desc_prod-content");
 
                 //costo
                 let costo = document.createElement("span");
-                costo.innerHTML= `<span>Costo:${prodotto.children[4].innerHTML}</span>`;
+                costo.innerHTML= ` Costo:${prodotto.children[4].innerHTML} `;
                 costo.classList.add("modal-div_desc_prod-content");
+
+                //bottone
+                let bottone = document.createElement("button");
+                bottone.classList.add("btn add btn-success");
+                bottone.addEventListener("onclick", () =>{
+                    carello.push(prod);
+                    console.log(carello);
+                });
 
                 //append di tutti gli elementi
                 div_desc_prod.appendChild(immagine);
@@ -117,6 +126,7 @@ function caricamento(){
                 div_desc_prod.appendChild(genere);
                 div_desc_prod.appendChild(descrizione);
                 div_desc_prod.appendChild(costo);
+                div_desc_prod.appendChild(bottone);
                 modal.style.display = "block";
             });
             let immagine = document.createElement("img");
@@ -129,13 +139,22 @@ function caricamento(){
             anno.innerHTML= prod.Anno;
             let costo = document.createElement("span");
             costo.innerHTML= prod.Costo+ " €";
+            let bottone = document.createElement("button");
+            bottone.classList.add("bottone_carrello");
+            bottone.setAttribute("onclick", () =>{
+                carello.push(prod);
+                console.log(carello);
+            });
+
+
             //appendo tutto nel div "div_prodotto"
             div.appendChild(prodotto);
             prodotto.appendChild(immagine);
             prodotto.appendChild(titolo);
             prodotto.appendChild(artista);
             prodotto.appendChild(anno);
-            prodotto.appendChild(costo);   
+            prodotto.appendChild(costo);
+            prodotto.appendChild(bottone);
         }
     }
 }

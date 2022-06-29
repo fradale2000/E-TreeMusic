@@ -116,6 +116,17 @@ margin: 6% auto auto;
   padding: 3%;
 }
 
+.bottone_carello{
+  background:url('Immagini/carrello_aggiunta.png') no-repeat;
+    float: left;
+    width: 10px;
+    height: 40px;
+}
+
+.button.btn.add::before {
+  font-family: fontAwesome;
+  content: "\f067\00a0";
+}
  /* .navbar{
     position: relative;
     overflow: hidden;
