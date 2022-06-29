@@ -85,19 +85,19 @@ for (let i = 0; i < lista_prodotti.length; i++) {
 
 // alert(a.Topics[1].topicName + " - " + a.Topics[1].subTopicName);
 
-function add(){
+function add(cont_prod){
     cont_prod++;
-    const titolo = document.getElementById('Titolo');
-    const Art = document.getElementById('Artista');
-    const Anno = document.getElementById('Anno');
+    const titolo = document.getElementById('Titolo').value;
+    const Art = document.getElementById('Artista').value;
+    const Anno = document.getElementById('Anno').value;
     const Genere = document.getElementById('gen');
-    const Descrizione = document.getElementById('desc');
-    const Prezzo = document.getElementById('Prezzo');
+    const Descrizione = document.getElementById('desc').value;
+    const Prezzo = document.getElementById('Prezzo').value;
 
     let prod= {
         "IDProd":cont_prod,
-        "Titolo":'canzone'+titolo,
-        "Artista":'artista'+Art,
+        "Titolo canzone" : titolo,
+        "Artista": Art,
         "Anno":Anno,
         "Genere":Genere,
         "Descrizione":Descrizione,
