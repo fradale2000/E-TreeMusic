@@ -1,4 +1,10 @@
 // by fradale2000 & Edo(poco)
+var cont = localStorage.length;
+var cont_prod = 0;
+var cont_canzone = 0;
+var cont_artista = 0;
+var cont_tot = 0;
+var lista_prodotti= [];
 var modal = document.getElementById("myModal");
 window.onclick = function(event) 
 {
@@ -10,12 +16,7 @@ window.onclick = function(event)
 function bab(){
     localStorage.clear();
 //vari contatori per for oppure crezione di oggetti
-var cont = localStorage.length;
-var cont_prod = 0;
-var cont_canzone = 0;
-var cont_artista = 0;
-var cont_tot = 0;
-var lista_prodotti= [];
+
 var div = document.getElementById("div_prodotti");
 //creo un tot di oggetti tramite for
 for (let i = 0; i < 10; i++) {
@@ -87,7 +88,8 @@ for (let i = 0; i < lista_prodotti.length; i++) {
 
 // alert(a.Topics[1].topicName + " - " + a.Topics[1].subTopicName);
 
-function add(cont_prod){
+function add(cont_prod,lista_prodotti){
+    cont_prod = lista_prodotti.length;
     cont_prod++;
     const titolo = document.getElementById('Titolo').value;
     const Art = document.getElementById('Artista').value;
