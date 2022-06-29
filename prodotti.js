@@ -25,26 +25,26 @@ function caricamento(){
 
 var div = document.getElementById("div_prodotti");
 //creo un tot di oggetti tramite for
-for (let i = 0; i < 10; i++) {
-    let prod= {
-        "IDProd":cont_prod,
-        "Titolo":'canzone'+cont_canzone,
-        "Artista":'artista'+cont_artista,
-        "Anno":2020,
-        "Genere":'rap',
-        "Descrizione":'desc.',
-        "Costo":3.50,
-        "scr": "Immagini/TestLogo.png",             
-    }
-    //salvo tutto nel localstorage
-    localStorage.setItem("song_" +cont_tot,JSON.stringify(prod));
-    // localStorage.setItem("carello" +cont_tot,JSON.stringify(carello));
-    //  lista_prodotti.push(prod);
-    cont_prod ++;
-    cont_canzone ++;
-    cont_artista ++;
-    cont_tot ++;
-}
+// for (let i = 0; i < 10; i++) {
+//     let prod= {
+//         "IDProd":cont_prod,
+//         "Titolo":'canzone'+cont_canzone,
+//         "Artista":'artista'+cont_artista,
+//         "Anno":2020,
+//         "Genere":'rap',
+//         "Descrizione":'desc.',
+//         "Costo":3.50,
+//         "scr": "Immagini/TestLogo.png",             
+//     }
+//     //salvo tutto nel localstorage
+//     localStorage.setItem("song_" +cont_tot,JSON.stringify(prod));
+//     // localStorage.setItem("carello" +cont_tot,JSON.stringify(carello));
+//     //  lista_prodotti.push(prod);
+//     cont_prod ++;
+//     cont_canzone ++;
+//     cont_artista ++;
+//     cont_tot ++;
+// }
 
 // localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
 console.log(lista_prodotti);
