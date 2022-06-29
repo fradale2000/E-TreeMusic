@@ -103,6 +103,6 @@ function add(cont_prod){
         "Costo":Prezzo,
         "scr": "Immagini/TestLogo.png",             
     }
-    localStorage.setItem("Song" +cont_tot,JSON.stringify(prod));
+    localStorage.setItem("song_" +cont_tot,JSON.stringify(new_prod));
     lista_prodotti.push(new_prod);
 }
