@@ -93,7 +93,7 @@ function add(cont_prod){
     const Descrizione = document.getElementById('desc').value;
     const Prezzo = document.getElementById('Prezzo').value;
 
-    let prod= {
+    let new_prod= {
         "IDProd":cont_prod,
         "Titolo canzone" : titolo,
         "Artista": Art,
@@ -104,4 +104,5 @@ function add(cont_prod){
         "scr": "Immagini/TestLogo.png",             
     }
     localStorage.setItem("Song" +cont_tot,JSON.stringify(prod));
+    lista_prodotti.push(new_prod);
 }
