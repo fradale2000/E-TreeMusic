@@ -55,7 +55,7 @@ h1{
   height: auto !important;
   padding: 5px;
   background: #547980;
-  align-items: center;
+  text-align: center;
   
 
 }/*da sistemare, footer*/
@@ -186,3 +186,10 @@ margin: 6% auto auto;
     li a:hover {
         background-color: rgb(188, 186, 186);
       } */
+
+      #record_carrello{
+        display: flex;
+        text-align: center;
+        flex-wrap: wrap;
+        margin: 0 auto;
+      }
