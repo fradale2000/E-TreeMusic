@@ -89,7 +89,7 @@ function add(cont_prod){
     const titolo = document.getElementById('Titolo').value;
     const Art = document.getElementById('Artista').value;
     const Anno = document.getElementById('Anno').value;
-    const Genere = document.getElementById('gen');
+    const Genere = document.getElementById('gen').value;
     const Descrizione = document.getElementById('desc').value;
     const Prezzo = document.getElementById('Prezzo').value;
 
