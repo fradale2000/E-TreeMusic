@@ -31,22 +31,21 @@ a {
   weight:50px ;
 }
 #home{
-  /* color: #33ee46;*/
-  color: black;
+
   margin-left: 1%; 
   margin-top: 8px;
 }
-#home:hover{
-  color: red;
-}
+
 #carrello{
-  /* color: #33ee46; */
-  color: black;
+
   margin-right: 1%;
 }
-#carrello:hover{
-  color: red;
+
+#carrello_grid{
+  background-color: beige;
+  display: flex;
 }
+
  ul{ list-style-type: none;
     margin: 0;
     padding: 0;
