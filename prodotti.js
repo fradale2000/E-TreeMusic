@@ -14,7 +14,13 @@ window.onclick = function(event)
     }
 }
 function caricamento(){
-    localStorage.clear();
+    let cont_new = 0;
+    while (localStorage.getItem('song_'+cont_new)!= null){
+        lista_prodotti.push(JSON.parse(localStorage.getItem('song_'+cont_new)));
+        cont_new++;
+    }
+  
+    //localStorage.clear();
 //vari contatori per for oppure crezione di oggetti
 
 var div = document.getElementById("div_prodotti");
@@ -33,7 +39,7 @@ for (let i = 0; i < 10; i++) {
     //salvo tutto nel localstorage
     localStorage.setItem("song_" +cont_tot,JSON.stringify(prod));
     // localStorage.setItem("carello" +cont_tot,JSON.stringify(carello));
-    lista_prodotti.push(prod);
+    //  lista_prodotti.push(prod);
     cont_prod ++;
     cont_canzone ++;
     cont_artista ++;
@@ -89,9 +95,8 @@ for (let i = 0; i < lista_prodotti.length; i++) {
 
 // alert(a.Topics[1].topicName + " - " + a.Topics[1].subTopicName);
 
-function add(cont_prod,lista_prodotti){
-    cont_prod = lista_prodotti.length;
-    cont_prod++;
+function add(){
+    cont_prod = localStorage.length;
     const titolo = document.getElementById('Titolo').value;
     const Art = document.getElementById('Artista').value;
     const Anno = document.getElementById('Anno').value;
@@ -109,6 +114,6 @@ function add(cont_prod,lista_prodotti){
         "Costo":Prezzo,
         "scr": "Immagini/TestLogo.png",             
     }
-    localStorage.setItem("song_" +cont_tot,JSON.stringify(new_prod));
-    lista_prodotti.push(new_prod);
+    localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
+    cont_prod++;
 }
