@@ -85,15 +85,15 @@ a {
   margin: 0 auto;
 }
 
- .song{
-  border-radius: 25px;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 5%;
-  border: solid 1px black;
-  margin: 6% auto auto;
+.song{
+border-radius: 25px;
+display: flex;
+text-align: center;
+align-items: center;
+flex-direction: column;
+padding: 5%;
+border: solid 1px black;
+margin: 6% auto auto;
  }
 #mymodal{
   display: none;
@@ -119,6 +119,7 @@ a {
   width: 80%; /* Could be more or less, depending on screen size */
   height: 80%;
   border-radius: 25px;
+  transition:all 150ms ease-in-out;
 }
 .modal-div_desc_prod {
   display: flex;
