@@ -55,7 +55,7 @@ h1{
   height: auto !important;
   padding: 5px;
   background: #547980;
-  align-items: center;
+  text-align: center;
   
 
 }/*da sistemare, footer*/
@@ -182,3 +182,10 @@ box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 5
     li a:hover {
         background-color: rgb(188, 186, 186);
       } */
+
+      #record_carrello{
+        display: flex;
+        text-align: center;
+        flex-wrap: wrap;
+        margin: 0 auto;
+      }
