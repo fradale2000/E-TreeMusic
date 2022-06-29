@@ -1,4 +1,4 @@
-// by fradale2000
+// by fradale2000 & Edo(poco)
 var modal = document.getElementById("myModal");
 window.onclick = function(event) 
 {
@@ -7,6 +7,8 @@ window.onclick = function(event)
       modal.style.display = "none";
     }
 }
+function bab(){
+    localStorage.clear();
 //vari contatori per for oppure crezione di oggetti
 var cont = localStorage.length;
 var cont_prod = 0;
@@ -36,6 +38,7 @@ for (let i = 0; i < 10; i++) {
     cont_artista ++;
     cont_tot ++;
 }
+
 // localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
 console.log(lista_prodotti);
 //ciclo per creare tutti gli oggetti nella pagina in maniera dinamica
@@ -72,7 +75,7 @@ for (let i = 0; i < lista_prodotti.length; i++) {
     prodotto.appendChild(anno);
     prodotto.appendChild(costo);    
 }
-
+}
 // var a = { Topics: [] }; // define container with empty Topics array
 
 // // add some topics
