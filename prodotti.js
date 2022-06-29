@@ -16,7 +16,6 @@ window.onclick = function(event)
     }
 }
 
-
 function caricamento(){
     let cont_new = 0;
     while (localStorage.getItem('song_'+cont_new)!= null){
@@ -41,7 +40,7 @@ function caricamento(){
             "Genere":'rap',
             "Descrizione":'desc.',
             "Costo":3.50,
-            "scr": "Immagini/TestLogo.png",             
+            "src": "Immagini/TestLogo.png",             
         }
         //salvo tutto nel localstorage
         localStorage.setItem("song_" +cont_tot,JSON.stringify(prod));
@@ -71,14 +70,13 @@ function caricamento(){
             //aggiungo un'id
             prodotto.setAttribute("id",prod.IDProd);
             prodotto.addEventListener("click", () => {
-                let div_prod = document.getElementById(prodotto.id);
                 let current_prod = lista_prodotti[prodotto.id];
                 console.log(current_prod.Genere)
-                console.log(div_prod)
-                console.log(prodotto.children)
+                console.log(lista_prodotti[prodotto.id].src)
+                console.log(div_desc_prod)
                 //immagine
                 let immagine = document.createElement("img");
-                immagine.setAttribute("src",prodotto.children[0]);
+                immagine.setAttribute("src",lista_prodotti[prodotto.id].src);
                 immagine.classList.add("modal-div_desc_prod-content");
 
                 //titolo
@@ -122,7 +120,7 @@ function caricamento(){
                 modal.style.display = "block";
             });
             let immagine = document.createElement("img");
-            immagine.setAttribute("src",prod.scr);
+            immagine.setAttribute("src",prod.src);
             let titolo = document.createElement("span");
             titolo.innerHTML= prod.Titolo;
             let artista = document.createElement("span");
@@ -169,7 +167,7 @@ function add(){
         "Genere":Genere,
         "Descrizione":Descrizione,
         "Costo":Prezzo,
-        "scr": "Immagini/TestLogo.png",             
+        "src": "Immagini/TestLogo.png",             
     }
     localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
     cont_prod++;
