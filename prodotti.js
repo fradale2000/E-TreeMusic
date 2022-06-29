@@ -5,7 +5,7 @@ var cont_canzone = 0;
 var cont_artista = 0;
 var cont_tot = 0;
 var lista_prodotti= [];
-var carello = [];
+var carrello = [];
 var modal = document.getElementById("myModal");
 var div_desc_prod = document.getElementById("div_desc_prod");
 window.onclick = function(event) 
@@ -72,9 +72,9 @@ function caricamento(){
             prodotto.setAttribute("id",prod.IDProd);
             prodotto.addEventListener("click", () => {
                 let current_prod = lista_prodotti[prodotto.id];
-                console.log(current_prod.Genere)
-                console.log(lista_prodotti[prodotto.id].src)
-                console.log(div_desc_prod)
+                // console.log(current_prod.Genere);
+                // console.log(lista_prodotti[prodotto.id].src);
+                // console.log(div_desc_prod);
                 //immagine
                 let immagine = document.createElement("img");
                 immagine.setAttribute("src",lista_prodotti[prodotto.id].src);
@@ -112,10 +112,10 @@ function caricamento(){
 
                 //bottone
                 let bottone = document.createElement("button");
-                bottone.classList.add("btn add btn-success");
+                bottone.classList.add("bottone_carrello");
                 bottone.addEventListener("onclick", () =>{
-                    carello.push(prod);
-                    console.log(carello);
+                    carrello.push(prod);
+                    console.log(carrello);
                 });
 
                 //append di tutti gli elementi
@@ -141,11 +141,10 @@ function caricamento(){
             costo.innerHTML= prod.Costo+ " €";
             let bottone = document.createElement("button");
             bottone.classList.add("bottone_carrello");
-            bottone.setAttribute("onclick", () =>{
-                carello.push(prod);
-                console.log(carello);
+            bottone.addEventListener("onclick", () =>{
+                carrello.push(prod);
+                console.log(carrello);
             });
-
 
             //appendo tutto nel div "div_prodotto"
             div.appendChild(prodotto);
