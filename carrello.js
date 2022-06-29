@@ -5,7 +5,7 @@ function printCarll(){
         localStorage.getItem("song_" +i,JSON.stringify(prod));
         var prod = JSON.parse(localStorage.getItem("song_"+i));
         let immagine = document.createElement("img");
-            immagine.setAttribute("src",prod.scr);
+            immagine.setAttribute("src",prod.src);
             let titolo = document.createElement("span");
             titolo.innerHTML= prod.Titolo;
             let artista = document.createElement("span");

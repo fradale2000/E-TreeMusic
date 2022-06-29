@@ -22,23 +22,48 @@ a {
   height: 10%;
   position: sticky;
   /* background-color: black; */
-  background-color: #2ece4b;;
+  background-color:  #f9f9f9;
+}
+h1{
+  margin: 0%;
+  font:fantasy;
+  font-style: normal;
+  font-family: Garamond;
+  text-align: center;
+  background-color: #c4ffdd;
 }
 
 #logop{
   margin-top: 10px;
-  height: 50px;
-  weight:50px ;
+  height: 80px;
+  weight:80px ;
 }
 #home{
 
   margin-left: 1%; 
-  margin-top: 8px;
+  margin-top: 15px;
 }
 
 #carrello{
 
   margin-right: 1%;
+}
+#Fine{
+  padding:20%;
+  left:0;
+  min-width: 100%;
+  height: auto !important;
+  padding: 5px;
+  background: #547980;
+  align-items: center;
+  
+
+}/*da sistemare, footer*/
+#loghi{
+  
+  align-items: center;
+  padding: 15px;
+  
 }
 
 #carrello_grid{
