@@ -28,7 +28,7 @@ for (let i = 0; i < 10; i++) {
         "scr": "Immagini/TestLogo.png",             
     }
     //salvo tutto nel localstorage
-    localStorage.setItem("account_" +cont_tot,JSON.stringify(prod));
+    localStorage.setItem("song_" +cont_tot,JSON.stringify(prod));
     // localStorage.setItem("carello" +cont_tot,JSON.stringify(carello));
     lista_prodotti.push(prod);
     cont_prod ++;
@@ -51,7 +51,7 @@ for (let i = 0; i < lista_prodotti.length; i++) {
     prodotto.addEventListener("click", () => {
         let cazzata = document.createElement("span");
         cazzata.innerHTML = "porcaputtana";
-        modal.append(cazzata);
+        modal.appendChild(cazzata);
         modal.style.display = "block";
     });
     let immagine = document.createElement("img");
