@@ -1,9 +1,6 @@
 // by fradale2000 & Edo(poco)
 var cont = localStorage.length;
 var cont_prod = 0;
-//var cont_canzone = 0;
-//var cont_artista = 0;
-//var cont_tot = 0;
 var lista_prodotti= [];
 var carrello = [];
 var modal = document.getElementById("myModal");
@@ -152,9 +149,13 @@ function caricamento(){
                 // console.log(lista_prodotti[prodotto.id].src);
                 // console.log(div_desc_prod);
                 //immagine
+                let div_immagine = document.createElement("div");
                 let immagine = document.createElement("img");
                 immagine.setAttribute("src",lista_prodotti[prodotto.id].src);
                 immagine.classList.add("modal-div_desc_prod-content");
+                immagine.classList.add("immagine");
+                div_immagine.classList.add("div_immagine");
+                div_immagine.appendChild(immagine);
 
                 //titolo
                 let titolo = document.createElement("span");
@@ -195,7 +196,7 @@ function caricamento(){
                 });
 
                 //append di tutti gli elementi
-                div_desc_prod.appendChild(immagine);
+                div_desc_prod.appendChild(div_immagine);
                 div_desc_prod.appendChild(titolo);
                 div_desc_prod.appendChild(artista);
                 div_desc_prod.appendChild(anno);
@@ -205,8 +206,12 @@ function caricamento(){
                 div_desc_prod.appendChild(bottone);
                 modal.style.display = "block";
             });
+            let div_immagine = document.createElement("div");
             let immagine = document.createElement("img");
             immagine.setAttribute("src",prod.src);
+            immagine.classList.add("immagine");
+            div_immagine.classList.add("div_immagine");
+            div_immagine.appendChild(immagine);
             
             let titolo = document.createElement("span");
             titolo.innerHTML= prod.Titolo;
@@ -224,7 +229,7 @@ function caricamento(){
             });
 
             //appendo tutto nel div "div_prodotto"
-            div_cliccabile.appendChild(immagine);
+            div_cliccabile.appendChild(div_immagine);
             div_cliccabile.appendChild(titolo);
             div_cliccabile.appendChild(artista);
             div_cliccabile.appendChild(anno);

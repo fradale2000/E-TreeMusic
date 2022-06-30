@@ -129,6 +129,14 @@ box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 5
   padding: 5%;
   margin: 6% auto auto;
 }
+.div_immagine{
+  height: 150px;
+  width: 150px;
+}
+.immagine{
+  width: 100%;
+  height: 100%;
+}
 #mymodal{
   display: none;
 }
