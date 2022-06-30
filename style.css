@@ -121,6 +121,14 @@ border: solid 1px black;
 margin: 6% auto auto;
 box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
  }
+.div_cliccabile{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5%;
+  margin: 6% auto auto;
+}
 #mymodal{
   display: none;
 }

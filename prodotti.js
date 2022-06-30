@@ -66,11 +66,14 @@ function caricamento(){
             console.log(prod);
             //creo un div per inserire la canzone in maniera dinamica
             let prodotto = document.createElement("div");
+            let div_cliccabile = document.createElement("div");
             //aggiungo la classe song
             prodotto.classList.add("song");
+            div_cliccabile.classList.add("div_cliccabile");
             //aggiungo un'id
             prodotto.setAttribute("id",prod.IDProd);
-            prodotto.addEventListener("click", () => {
+            //creo un'evento click
+            div_cliccabile.addEventListener("click",() => {
                 let current_prod = lista_prodotti[prodotto.id];
                 // console.log(current_prod.Genere);
                 // console.log(lista_prodotti[prodotto.id].src);
@@ -82,17 +85,17 @@ function caricamento(){
 
                 //titolo
                 let titolo = document.createElement("span");
-                titolo.innerHTML= `Titolo:${prodotto.children[1].innerHTML}`;
+                titolo.innerHTML= `Titolo:${div_cliccabile.children[1].innerHTML}`;
                 titolo.classList.add("modal-div_desc_prod-content");
 
                 //artista
                 let artista = document.createElement("span");
-                artista.innerHTML= ` Artista:${prodotto.children[2].innerHTML} `;
+                artista.innerHTML= ` Artista:${div_cliccabile.children[2].innerHTML} `;
                 artista.classList.add("modal-div_desc_prod-content");
 
                 //anno
                 let anno = document.createElement("span");
-                anno.innerHTML= ` Anno:${prodotto.children[3].innerHTML} `;
+                anno.innerHTML= ` Anno:${div_cliccabile.children[3].innerHTML} `;
                 anno.classList.add("modal-div_desc_prod-content");
 
                 //genere
@@ -107,7 +110,7 @@ function caricamento(){
 
                 //costo
                 let costo = document.createElement("span");
-                costo.innerHTML= ` Costo:${prodotto.children[4].innerHTML} `;
+                costo.innerHTML= ` Costo:${div_cliccabile.children[4].innerHTML} `;
                 costo.classList.add("modal-div_desc_prod-content");
 
                 //bottone
@@ -131,6 +134,7 @@ function caricamento(){
             });
             let immagine = document.createElement("img");
             immagine.setAttribute("src",prod.src);
+            
             let titolo = document.createElement("span");
             titolo.innerHTML= prod.Titolo;
             let artista = document.createElement("span");
@@ -147,13 +151,14 @@ function caricamento(){
             });
 
             //appendo tutto nel div "div_prodotto"
-            div.appendChild(prodotto);
-            prodotto.appendChild(immagine);
-            prodotto.appendChild(titolo);
-            prodotto.appendChild(artista);
-            prodotto.appendChild(anno);
-            prodotto.appendChild(costo);
+            div_cliccabile.appendChild(immagine);
+            div_cliccabile.appendChild(titolo);
+            div_cliccabile.appendChild(artista);
+            div_cliccabile.appendChild(anno);
+            div_cliccabile.appendChild(costo);
+            prodotto.appendChild(div_cliccabile);
             prodotto.appendChild(bottone);
+            div.appendChild(prodotto);
         }
     }
 }
