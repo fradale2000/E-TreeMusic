@@ -1,9 +1,9 @@
 // by fradale2000 & Edo(poco)
 var cont = localStorage.length;
 var cont_prod = 0;
-var cont_canzone = 0;
-var cont_artista = 0;
-var cont_tot = 0;
+//var cont_canzone = 0;
+//var cont_artista = 0;
+//var cont_tot = 0;
 var lista_prodotti= [];
 var carrello = [];
 var modal = document.getElementById("myModal");
@@ -32,26 +32,99 @@ function caricamento(){
     //     c++;
     // }
     //creo un tot di oggetti tramite for
-    for (let i = 0; i < 5; i++) {
-        let prod= {
+           //for (let i = 0; i < 5; i++) {                                    /////TEST\\\\
+        let prodA= {
             "IDProd":cont_prod,
-            "Titolo":'canzone'+cont_canzone,
-            "Artista":'artista'+cont_artista,
+            "Titolo": 'CRUDELIA - i nervi' ,
+            "Artista":'Marracash',
             "Anno":2020,
-            "Genere":'rap',
-            "Descrizione":'desc.',
-            "Costo":3.50,
-            "src": "Immagini/TestLogo.png",             
+            "Genere":'Rap',
+            "Descrizione":'Tratto dall’album Persona, l’artista si dedica a raccontare le sue esperienze personali passate.',
+            "Costo":2.59,
+            "src": "Immagini/canzoni/CRUDELIA.jpg",             
         }
+        localStorage.setItem("song_" +cont_prod,JSON.stringify(prodA));
+        cont_prod ++;
+        let prodB= {
+            "IDProd":cont_prod,
+            "Titolo":'Falling Back',
+            "Artista":'Drake',
+            "Anno":2022,
+            "Genere":'R&B/HipHop',
+            "Descrizione":'Drake è uno dei primi 10 artisti più ascoltati nel mondo.',
+            "Costo":3.10,
+            "src": "Immagini/canzoni/Falling_Back.jpg",             
+        }
+        localStorage.setItem("song_" +cont_prod,JSON.stringify(prodB));
+        cont_prod ++;
+        let prodC= {
+            "IDProd":cont_prod,
+            "Titolo":'Puffin on Zootiez',
+            "Artista":'Future',
+            "Anno":2022,
+            "Genere":'Rap',
+            "Descrizione":'tratto dall’album Gunna . DS4EVER',
+            "Costo":1.50,
+            "src": "Immagini/canzoni/Puffin_on_zooties.jpg",             
+        }
+        localStorage.setItem("song_" +cont_prod,JSON.stringify(prodC));
+        cont_prod ++;
+        let prodD= {
+            "IDProd":cont_prod,
+            "Titolo":'Bimbi per strada',
+            "Artista":'Fedez',
+            "Anno":2020,
+            "Genere":'HipHop',
+            "Descrizione":'Hit Estiva',
+            "Costo":1.80,
+            "src": "Immagini/canzoni/Bimbi_per_strada.jpg",             
+        }
+        localStorage.setItem("song_" +cont_prod,JSON.stringify(prodD));
+        cont_prod ++;
+        let prodE= {
+            "IDProd":cont_prod,
+            "Titolo":'Casablanca',
+            "Artista":'BabyGang',
+            "Anno":2021,
+            "Genere":'Rap',
+            "Descrizione":'Giovane rapper con problemi legali racconta la sua vita per strada',
+            "Costo":1.50,
+            "src": "Immagini/canzoni/Casablanca.jpg",             
+        }
+        localStorage.setItem("song_" +cont_prod,JSON.stringify(prodE));
+        cont_prod ++;
+        let prodF= {
+            "IDProd":cont_prod,
+            "Titolo":'Shakerando',
+            "Artista":'Rhove',
+            "Anno":2021,
+            "Genere":'Rap',
+            "Descrizione":' Giovane ragazzo di provincia ci propone uno stile influenzato dalla Francia',
+            "Costo":1.20,
+            "src": "Immagini/canzoni/Shakerando.jpg",             
+        }
+        localStorage.setItem("song_" +cont_prod,JSON.stringify(prodF));
+        cont_prod ++;
+        let prodG= {
+            "IDProd":cont_prod,
+            "Titolo":'0ffline',
+            "Artista":'thasupreme',
+            "Anno":2020,
+            "Genere":'Rap',
+            "Descrizione":'Piace alla prof zarini',
+            "Costo":0.99,
+            "src": "Immagini/canzoni/0ffline.jpg",             
+        }
+        localStorage.setItem("song_" +cont_prod,JSON.stringify(prodG));
+        cont_prod ++;
         //salvo tutto nel localstorage
-        localStorage.setItem("song_" +cont_tot,JSON.stringify(prod));
+    
         // localStorage.setItem("carello" +cont_tot,JSON.stringify(carello));
         //  lista_prodotti.push(prod);
-        cont_prod ++;
-        cont_canzone ++;
-        cont_artista ++;
-        cont_tot ++;
-    }
+        // cont_canzone ++;
+        // cont_artista ++;
+        // cont_tot ++;
+    //}
     var div = document.getElementById("div_prodotti");
 
     // localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
