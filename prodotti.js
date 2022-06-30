@@ -154,7 +154,9 @@ function caricamento(){
                 immagine.setAttribute("src",lista_prodotti[prodotto.id].src);
                 immagine.classList.add("modal-div_desc_prod-content");
                 immagine.classList.add("immagine");
-                div_immagine.classList.add("div_immagine");
+                // div_immagine.classList.add("div_immagine");
+                div_immagine.style.width = "200px";
+                div_immagine.style.height = "200px";
                 div_immagine.appendChild(immagine);
 
                 //titolo
@@ -188,10 +190,14 @@ function caricamento(){
                 costo.classList.add("modal-div_desc_prod-content");
 
                 //bottone
-                let bottone = document.createElement("button");
-                bottone.classList.add("bottone_carrello");
-                bottone.addEventListener("onclick", () =>{
-                    carrello.push(prod);
+                let div_bottone = document.createElement("div");
+                let bottone = document.createElement("img");
+                bottone.setAttribute("src","Immagini/vinile+.png");
+                bottone.classList.add("bottone");
+                div_bottone.classList.add("div_bottone");
+                div_bottone.appendChild(bottone);
+                div_bottone.addEventListener("click", () =>{
+                    carrello.push(current_prod);
                     console.log(carrello);
                 });
 
@@ -203,7 +209,7 @@ function caricamento(){
                 div_desc_prod.appendChild(genere);
                 div_desc_prod.appendChild(descrizione);
                 div_desc_prod.appendChild(costo);
-                div_desc_prod.appendChild(bottone);
+                div_desc_prod.appendChild(div_bottone);
                 modal.style.display = "block";
             });
             let div_immagine = document.createElement("div");

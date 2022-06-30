@@ -19,6 +19,20 @@ function printCarll(){
         let costo = document.createElement("span");
         costo.innerHTML= prod.Costo+ " €";
             
+        //bottone +
+        let bottone_piu = document.createElement("button");
+        bottone_piu.classList.add("bottone_piu");
+        bottone_piu.addEventListener("onclick", () =>{
+            carrello.push(prod);
+            console.log(carrello);
+        });
+        //bottone -
+        let bottone_meno = document.createElement("button");
+        bottone_meno.classList.add("bottone_meno");
+        bottone_meno.addEventListener("onclick", () =>{
+            carrello.push(prod);
+            console.log(carrello);
+        });
         //appendo tutto nel div "record_carrello"
         let prodotto = document.createElement("div");
         prodotto.setAttribute("class","pro")
@@ -27,6 +41,8 @@ function printCarll(){
         prodotto.appendChild(artista);
         prodotto.appendChild(anno);
         prodotto.appendChild(costo);
+        prodotto.appendChild(bottone_piu);
+        prodotto.appendChild(bottone_meno);
         div.appendChild(prodotto);   
     }
 }
