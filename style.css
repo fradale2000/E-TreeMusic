@@ -184,21 +184,17 @@ box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 5
   height: 100%;
 }
 .div_bottone{
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
 }
-.bottone_piu{
-  background:url('Immagini/vinile+.png') no-repeat;
-    float: left;
-    width: 80px;
-    height: 0px;
+.bottoni_carrello{
+  height: 50px;
+  width: 50px;
 }
-.bottone_meno{
-  background:url('Immagini/vinile-.png') no-repeat;
-    float: left;
-    width: 50px;
-    height: 50px;
+.div_bottoni_carrello{
+  display: flex;
 }
+
  /* .navbar{
     position: relative;
     overflow: hidden;

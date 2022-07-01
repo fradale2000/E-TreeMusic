@@ -19,20 +19,29 @@ function printCarll(){
         let costo = document.createElement("span");
         costo.innerHTML= prod.Costo+ " €";
             
+        //div per distanziare i bottoni del carrello
+        let div_bottoni_carrello = document.createElement("div_bottoni_carrello");
+        div_bottoni_carrello.classList.add("div_bottoni_carrello");
         //bottone +
-        let bottone_piu = document.createElement("button");
-        bottone_piu.classList.add("bottone_piu");
-        bottone_piu.addEventListener("onclick", () =>{
-            carrello.push(prod);
-            console.log(carrello);
-        });
+        let div_bottone_piu = document.createElement("div");
+        let bottone_piu = document.createElement("img");
+        bottone_piu.setAttribute("src","Immagini/vinile+.png");
+        bottone_piu.classList.add("bottone");
+        div_bottone_piu.classList.add("bottoni_carrello");
+        div_bottone_piu.classList.add("div_bottoni_carrello");
+        div_bottone_piu.appendChild(bottone_piu);
+        div_bottone_piu.addEventListener("click", AggiuntaCarrello(prod));
+        div_bottoni_carrello.appendChild(div_bottone_piu);
         //bottone -
-        let bottone_meno = document.createElement("button");
-        bottone_meno.classList.add("bottone_meno");
-        bottone_meno.addEventListener("onclick", () =>{
-            carrello.push(prod);
-            console.log(carrello);
-        });
+        let div_bottone_meno = document.createElement("div");
+        let bottone_meno = document.createElement("img");
+        bottone_meno.setAttribute("src","Immagini/vinile-.png");
+        bottone_meno.classList.add("bottone");
+        div_bottone_meno.classList.add("bottoni_carrello");
+        div_bottone_meno.classList.add("div_bottoni_carrello");
+        div_bottone_meno.appendChild(bottone_meno);
+        div_bottone_meno.addEventListener("click", AggiuntaCarrello(prod));
+        div_bottoni_carrello.appendChild(div_bottone_meno);
         //appendo tutto nel div "record_carrello"
         let prodotto = document.createElement("div");
         prodotto.setAttribute("class","pro")
@@ -41,8 +50,7 @@ function printCarll(){
         prodotto.appendChild(artista);
         prodotto.appendChild(anno);
         prodotto.appendChild(costo);
-        prodotto.appendChild(bottone_piu);
-        prodotto.appendChild(bottone_meno);
+        prodotto.appendChild(div_bottoni_carrello);
         div.appendChild(prodotto);   
     }
 }

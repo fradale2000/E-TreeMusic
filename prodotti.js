@@ -38,7 +38,8 @@ function caricamento(){
             "Genere":'Rap',
             "Descrizione":'Tratto dall’album Persona, l’artista si dedica a raccontare le sue esperienze personali passate.',
             "Costo":2.59,
-            "src": "Immagini/canzoni/CRUDELIA.jpg",             
+            "src": "Immagini/canzoni/CRUDELIA.jpg",
+            "quantita": 0,            
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodA));
         cont_prod ++;
@@ -50,7 +51,8 @@ function caricamento(){
             "Genere":'R&B/HipHop',
             "Descrizione":'Drake è uno dei primi 10 artisti più ascoltati nel mondo.',
             "Costo":3.10,
-            "src": "Immagini/canzoni/Falling_Back.jpg",             
+            "src": "Immagini/canzoni/Falling_Back.jpg",
+            "quantita": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodB));
         cont_prod ++;
@@ -62,7 +64,8 @@ function caricamento(){
             "Genere":'Rap',
             "Descrizione":'tratto dall’album Gunna . DS4EVER',
             "Costo":1.50,
-            "src": "Immagini/canzoni/Puffin_on_zooties.jpg",             
+            "src": "Immagini/canzoni/Puffin_on_zooties.jpg",
+            "quantita": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodC));
         cont_prod ++;
@@ -74,7 +77,8 @@ function caricamento(){
             "Genere":'HipHop',
             "Descrizione":'Hit Estiva',
             "Costo":1.80,
-            "src": "Immagini/canzoni/Bimbi_per_strada.jpg",             
+            "src": "Immagini/canzoni/Bimbi_per_strada.jpg",
+            "quantita": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodD));
         cont_prod ++;
@@ -86,7 +90,8 @@ function caricamento(){
             "Genere":'Rap',
             "Descrizione":'Giovane rapper con problemi legali racconta la sua vita per strada',
             "Costo":1.50,
-            "src": "Immagini/canzoni/Casablanca.jpg",             
+            "src": "Immagini/canzoni/Casablanca.jpg",
+            "quantita": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodE));
         cont_prod ++;
@@ -98,7 +103,8 @@ function caricamento(){
             "Genere":'Rap',
             "Descrizione":' Giovane ragazzo di provincia ci propone uno stile influenzato dalla Francia',
             "Costo":1.20,
-            "src": "Immagini/canzoni/Shakerando.jpg",             
+            "src": "Immagini/canzoni/Shakerando.jpg",
+            "quantita": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodF));
         cont_prod ++;
@@ -110,18 +116,12 @@ function caricamento(){
             "Genere":'Rap',
             "Descrizione":'Piace alla prof zarini',
             "Costo":0.99,
-            "src": "Immagini/canzoni/0ffline.jpg",             
+            "src": "Immagini/canzoni/0ffline.jpg",
+            "quantita": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodG));
         cont_prod ++;
         //salvo tutto nel localstorage
-    
-        // localStorage.setItem("carello" +cont_tot,JSON.stringify(carello));
-        //  lista_prodotti.push(prod);
-        // cont_canzone ++;
-        // cont_artista ++;
-        // cont_tot ++;
-    //}
     var div = document.getElementById("div_prodotti");
 
     // localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
@@ -142,12 +142,10 @@ function caricamento(){
             div_cliccabile.classList.add("div_cliccabile");
             //aggiungo un'id
             prodotto.setAttribute("id",prod.IDProd);
+            //modal ___________________________________________________________________
             //creo un'evento click
             div_cliccabile.addEventListener("click",() => {
                 let current_prod = lista_prodotti[prodotto.id];
-                // console.log(current_prod.Genere);
-                // console.log(lista_prodotti[prodotto.id].src);
-                // console.log(div_desc_prod);
                 //immagine
                 let div_immagine = document.createElement("div");
                 let immagine = document.createElement("img");
@@ -196,11 +194,7 @@ function caricamento(){
                 bottone.classList.add("bottone");
                 div_bottone.classList.add("div_bottone");
                 div_bottone.appendChild(bottone);
-                div_bottone.addEventListener("click", () =>{
-                    carrello.push(prod);
-                    console.log(carrello);
-                });
-
+                div_bottone.addEventListener("click",AggiuntaCarrello(prod));
                 //append di tutti gli elementi
                 div_desc_prod.appendChild(div_immagine);
                 div_desc_prod.appendChild(titolo);
@@ -234,10 +228,7 @@ function caricamento(){
             bottone.classList.add("bottone");
             div_bottone.classList.add("div_bottone");
             div_bottone.appendChild(bottone);
-            div_bottone.addEventListener("click", () =>{
-                carrello.push(current_prod);
-                console.log(carrello);
-            });
+            div_bottone.addEventListener("click", AggiuntaCarrello(prod));
 
             //appendo tutto nel div "div_prodotto"
             div_cliccabile.appendChild(div_immagine);
@@ -279,8 +270,14 @@ function add(){
         "Genere":Genere,
         "Descrizione":Descrizione,
         "Costo":Prezzo,
-        "src": "Immagini/TestLogo.png",             
+        "src": "Immagini/TestLogo.png",
+        "quantita": 0,              
     }
     localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
     cont_prod++;
+}
+
+function AggiuntaCarrello(prod){
+    carrello.push(prod);
+    console.log(carrello);
 }
