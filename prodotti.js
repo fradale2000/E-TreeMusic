@@ -197,7 +197,7 @@ function caricamento(){
                 div_bottone.classList.add("div_bottone");
                 div_bottone.appendChild(bottone);
                 div_bottone.addEventListener("click", () =>{
-                    carrello.push(current_prod);
+                    carrello.push(prod);
                     console.log(carrello);
                 });
 
@@ -227,10 +227,15 @@ function caricamento(){
             anno.innerHTML= prod.Anno;
             let costo = document.createElement("span");
             costo.innerHTML= prod.Costo+ " €";
-            let bottone = document.createElement("button");
-            bottone.classList.add("bottone_carrello");
-            bottone.addEventListener("onclick", () =>{
-                carrello.push(prod);
+            
+            let div_bottone = document.createElement("div");
+            let bottone = document.createElement("img");
+            bottone.setAttribute("src","Immagini/vinile+.png");
+            bottone.classList.add("bottone");
+            div_bottone.classList.add("div_bottone");
+            div_bottone.appendChild(bottone);
+            div_bottone.addEventListener("click", () =>{
+                carrello.push(current_prod);
                 console.log(carrello);
             });
 
@@ -241,7 +246,7 @@ function caricamento(){
             div_cliccabile.appendChild(anno);
             div_cliccabile.appendChild(costo);
             prodotto.appendChild(div_cliccabile);
-            prodotto.appendChild(bottone);
+            prodotto.appendChild(div_bottone);
             div.appendChild(prodotto);
         }
     }

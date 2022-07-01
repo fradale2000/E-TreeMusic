@@ -45,7 +45,6 @@ h1{
 }
 
 #carrello{
-
   margin-right: 1%;
 }
 #Fine{
@@ -109,6 +108,7 @@ h1{
   flex-wrap: wrap;
   margin: 0 auto;
 }
+
 
 .song{
 border-radius: 25px;
