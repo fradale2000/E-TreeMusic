@@ -143,6 +143,8 @@ function caricamento(){
             //aggiungo un'id
             prodotto.setAttribute("id",prod.IDProd);
             //creo un'evento click
+//--------------------------------------------------------------------------
+//                             INIZIO MODAL
             div_cliccabile.addEventListener("click",() => {
                 let current_prod = lista_prodotti[prodotto.id];
                 //immagine
@@ -209,6 +211,8 @@ function caricamento(){
                 div_desc_prod.appendChild(div_bottone);
                 modal.style.display = "block";
             });
+            //            FINE MODAL
+//-----------------------------------------------------------
             let div_immagine = document.createElement("div");
             let immagine = document.createElement("img");
             immagine.setAttribute("src",prod.src);
