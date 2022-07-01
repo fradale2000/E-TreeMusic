@@ -6,6 +6,7 @@ a {
     color: inherit;
     text-decoration: none;
     text-align: center;
+    margin-top: 10px;
   }
 
   #add{
@@ -36,12 +37,12 @@ h1{
 #logop{
   margin-top: 10px;
   height: 80px;
-  weight:80px ;
+  width:80px ;
 }
 #home{
 
   margin-left: 1%; 
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 #carrello{
@@ -184,8 +185,8 @@ box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 5
   height: 100%;
 }
 .div_bottone{
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
 }
 .bottoni_carrello{
   height: 50px;
