@@ -142,7 +142,6 @@ function caricamento(){
             div_cliccabile.classList.add("div_cliccabile");
             //aggiungo un'id
             prodotto.setAttribute("id",prod.IDProd);
-            //modal ___________________________________________________________________
             //creo un'evento click
             div_cliccabile.addEventListener("click",() => {
                 let current_prod = lista_prodotti[prodotto.id];
@@ -194,7 +193,11 @@ function caricamento(){
                 bottone.classList.add("bottone");
                 div_bottone.classList.add("div_bottone");
                 div_bottone.appendChild(bottone);
-                div_bottone.addEventListener("click",AggiuntaCarrello(prod));
+                div_bottone.addEventListener("click", () =>{
+                    carrello.push(prod);
+                    console.log(carrello);
+                });
+
                 //append di tutti gli elementi
                 div_desc_prod.appendChild(div_immagine);
                 div_desc_prod.appendChild(titolo);
@@ -228,7 +231,10 @@ function caricamento(){
             bottone.classList.add("bottone");
             div_bottone.classList.add("div_bottone");
             div_bottone.appendChild(bottone);
-            div_bottone.addEventListener("click", AggiuntaCarrello(prod));
+            div_bottone.addEventListener("click", () =>{
+                carrello.push(prod);
+                console.log(carrello);
+            });
 
             //appendo tutto nel div "div_prodotto"
             div_cliccabile.appendChild(div_immagine);
@@ -271,13 +277,8 @@ function add(){
         "Descrizione":Descrizione,
         "Costo":Prezzo,
         "src": "Immagini/TestLogo.png",
-        "quantita": 0,              
+        "capacita": 0,             
     }
     localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
     cont_prod++;
-}
-
-function AggiuntaCarrello(prod){
-    carrello.push(prod);
-    console.log(carrello);
 }

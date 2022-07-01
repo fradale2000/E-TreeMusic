@@ -30,7 +30,10 @@ function printCarll(){
         div_bottone_piu.classList.add("bottoni_carrello");
         div_bottone_piu.classList.add("div_bottoni_carrello");
         div_bottone_piu.appendChild(bottone_piu);
-        div_bottone_piu.addEventListener("click", AggiuntaCarrello(prod));
+        div_bottone_piu.addEventListener("click", () =>{
+            carrello.push(prod);
+            console.log(carrello);
+        });
         div_bottoni_carrello.appendChild(div_bottone_piu);
         //bottone -
         let div_bottone_meno = document.createElement("div");
@@ -40,11 +43,14 @@ function printCarll(){
         div_bottone_meno.classList.add("bottoni_carrello");
         div_bottone_meno.classList.add("div_bottoni_carrello");
         div_bottone_meno.appendChild(bottone_meno);
-        div_bottone_meno.addEventListener("click", AggiuntaCarrello(prod));
+        div_bottone_meno.addEventListener("click", () =>{
+            carrello.push(prod);
+            console.log(carrello);
+        });
         div_bottoni_carrello.appendChild(div_bottone_meno);
         //appendo tutto nel div "record_carrello"
         let prodotto = document.createElement("div");
-        prodotto.setAttribute("class","pro")
+        prodotto.setAttribute("class","pro");
         prodotto.appendChild(div_immagine);
         prodotto.appendChild(titolo);
         prodotto.appendChild(artista);
