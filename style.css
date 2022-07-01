@@ -6,6 +6,7 @@ a {
     color: inherit;
     text-decoration: none;
     text-align: center;
+    margin-top: 10px;
   }
 
   #add{
@@ -36,12 +37,12 @@ h1{
 #logop{
   margin-top: 10px;
   height: 80px;
-  weight:80px ;
+  width:80px ;
 }
 #home{
 
   margin-left: 1%; 
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 #carrello{
