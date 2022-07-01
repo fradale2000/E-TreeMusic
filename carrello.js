@@ -1,7 +1,7 @@
 function printCarll(){
     var div = document.getElementById("record_carrello");
     
-    for (let i = 0; i < localStorage.length; i++){
+    for (let i = 0; i < carrello.length; i++){
         localStorage.getItem("song_" +i,JSON.stringify(prod));
         var prod = JSON.parse(localStorage.getItem("song_"+i));
         let div_immagine = document.createElement("div");
