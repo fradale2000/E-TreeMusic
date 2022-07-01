@@ -236,8 +236,10 @@ function caricamento(){
             div_bottone.classList.add("div_bottone");
             div_bottone.appendChild(bottone);
             div_bottone.addEventListener("click", () =>{
-                carrello.push(prod);
+                let current_prod = lista_prodotti[prodotto.id];
+                carrello.push(current_prod);
                 console.log(carrello);
+
             });
 
             //appendo tutto nel div "div_prodotto"
