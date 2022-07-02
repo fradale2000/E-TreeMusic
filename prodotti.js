@@ -34,7 +34,7 @@ function caricamento(){
             "IDProd":cont_prod,
             "Titolo": 'CRUDELIA - i nervi' ,
             "Artista":'Marracash',
-            "Anno":2020,
+            "Anno": '2020',
             "Genere":'Rap',
             "Descrizione":'Tratto dall’album Persona, l’artista si dedica a raccontare le sue esperienze personali passate.',
             "Costo":2.59,
@@ -47,7 +47,7 @@ function caricamento(){
             "IDProd":cont_prod,
             "Titolo":'Falling Back',
             "Artista":'Drake',
-            "Anno":2022,
+            "Anno":'2022',
             "Genere":'R&B/HipHop',
             "Descrizione":'Drake è uno dei primi 10 artisti più ascoltati nel mondo.',
             "Costo":3.10,
@@ -60,7 +60,7 @@ function caricamento(){
             "IDProd":cont_prod,
             "Titolo":'Puffin on Zootiez',
             "Artista":'Future',
-            "Anno":2022,
+            "Anno":'2022',
             "Genere":'Rap',
             "Descrizione":'tratto dall’album Gunna . DS4EVER',
             "Costo":1.50,
@@ -73,7 +73,7 @@ function caricamento(){
             "IDProd":cont_prod,
             "Titolo":'Bimbi per strada',
             "Artista":'Fedez',
-            "Anno":2020,
+            "Anno":'2020',
             "Genere":'HipHop',
             "Descrizione":'Hit Estiva',
             "Costo":1.80,
@@ -86,7 +86,7 @@ function caricamento(){
             "IDProd":cont_prod,
             "Titolo":'Casablanca',
             "Artista":'BabyGang',
-            "Anno":2021,
+            "Anno":'2021',
             "Genere":'Rap',
             "Descrizione":'Giovane rapper con problemi legali racconta la sua vita per strada',
             "Costo":1.50,
@@ -99,7 +99,7 @@ function caricamento(){
             "IDProd":cont_prod,
             "Titolo":'Shakerando',
             "Artista":'Rhove',
-            "Anno":2021,
+            "Anno":'2021',
             "Genere":'Rap',
             "Descrizione":' Giovane ragazzo di provincia ci propone uno stile influenzato dalla Francia',
             "Costo":1.20,
@@ -112,7 +112,7 @@ function caricamento(){
             "IDProd":cont_prod,
             "Titolo":'0ffline',
             "Artista":'thasupreme',
-            "Anno":2020,
+            "Anno":'2020',
             "Genere":'Rap',
             "Descrizione":'Piace alla prof zarini',
             "Costo":0.99,
@@ -313,8 +313,81 @@ function add(){
     localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
     cont_prod++;
 }
-function SetLocal(carrello,lista_prodotti) {
-    if (carrello) {
-        
-    }
-}
+//-----------------------------------------------------------------------------------------
+//     FILTRI DI RICERCA 
+function Search(){
+    let ART = document.getElementById("SArtista").value; // prendo il valore nella prima searchbar
+    let ANNO = document.getElementById("SYear").value; // prendo il valore nella seconda searchbar
+    let GEN = document.getElementById("SGenere").value; // prendo il valore nella terza searchbar
+
+    if (ART=="" && ANNO=="" && GEN==""){ //SE TUTTE SONO VUOTE "BLOCK" A TUTTI I PRODOTTI
+        for (let i = 0; i < lista_prodotti.length; i++) {
+            document.getElementById(i).style.display = "block";
+            }
+        }
+    else{
+        for (let i = 0; i < lista_prodotti.length; i++) {
+            if(ART != "" && ANNO=="" && GEN==""){       //SE IL CAMPO ARTISTA NON è VUOTO E GLI ALTRI SI,ENTRA
+                if(ART == lista_prodotti[i].Artista){    
+                                      document.getElementById(i).style.display = "block";   
+                                }else{
+                                    document.getElementById(i).style.display = "none";   
+                                } }
+
+            if (ANNO != "" && ART =="" && GEN==""){              //SE IL CAMPO ANNO NON è VUOTO E GLI ALTRI SI,ENTRA
+                if(ANNO == lista_prodotti[i].Anno){      
+                                    document.getElementById(i).style.display = "block";   
+                            }else{ 
+                                    document.getElementById(i).style.display = "none";
+                                } 
+                            }
+
+            if(GEN != "" && ANNO=="" && ART==""){                //SE IL CAMPO GENERE NON è VUOTO E GLI ALTRI SI,ENTRA               
+                if(GEN == lista_prodotti[i].Genere){    
+                                    document.getElementById(i).style.display = "block";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                }
+                        }
+
+            if(ART != "" && ANNO != "" && GEN == ""){           //SE IL CAMPO ARTISTA E ANNO NON SONO VUOTI ENTRA
+                if(ART == lista_prodotti[i].Artista && ANNO == lista_prodotti[i].Anno){    
+                                    document.getElementById(i).style.display = "block";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                }
+                            }
+
+            if(ART != "" && ANNO == "" && GEN != ""){      //SE IL CAMPO ARTISTA E GENERE NON SONO VUOTI ENTRA
+                if(ART == lista_prodotti[i].Artista && GEN == lista_prodotti[i].Genere){    
+                                    document.getElementById(i).style.display = "block";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                    }
+                            }
+                            
+            if(ART == "" && ANNO != "" && GEN != ""){      //SE IL CAMPO ANNO E GENERE NON SONO VUOTI ENTRA
+                if(ANNO == lista_prodotti[i].Anno && GEN == lista_prodotti[i].Genere){    
+                                    document.getElementById(i).style.display = "block";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                    }
+                            }     
+                            
+            if(ART != "" && ANNO != "" && GEN != ""){      //SE TUTTI I CAMPI NON SONO VUOTI,ENTRA
+                if(ART == lista_prodotti[i].Artista && ANNO == lista_prodotti[i].Anno && GEN == lista_prodotti[i].Genere){    
+                                    document.getElementById(i).style.display = "block";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                    }
+                            }    
+
+}//chiusura FOR
+}//chiusura ELSE
+}//chiusura FUNZIONE
+
+
+
+
+                   //FINE SEARCHBAR
+//--------------------------------------------------------------------------------------------
