@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>E-TreeMusic</title>
-    <script src="script.js"></script>
 </head>
-<body id="body">
+<body id="body" onload="lastAdded()">
     <div id="navBar">
         <div id="home" >
-            <a href="index.html">
+            <a href="prodotti.html">
                 <img src="Immagini/home.png" height: 40px; width="40px" ;>
             </a>
         </div>
-        <img src="Immagini/TestLogo.png" id="logop">
+        <div>
+            <a href="index.html">
+            <img src="Immagini/TestLogo.png" id="logop">
+            </a>
+        </div>
         <div id="carrello">
             <a  href="carrello.html">
                 <img src="Immagini/carrello.png"height: 50px; width="50px" ;>
@@ -31,8 +34,9 @@
         <li><a href="">prodotti</a></li>
         <li><a href="">carrello</a></li>
       </ul> -->
-    
-    <div class="lista_ultime_aggiunte">
+
+    <p style="text-align: center;">ULTIME USCITE</p>
+    <div id="lista_ultime_aggiunte">
 
     </div>
     <div id="Fine">
@@ -52,6 +56,6 @@
 
     </div>
       
-
+    <script src="prodotti.js"></script>
 </body>
 </html>

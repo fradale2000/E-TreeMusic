@@ -134,7 +134,7 @@ function caricamento(){
     // localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
     console.log(lista_prodotti);
     //ciclo per creare tutti gli oggetti nella pagina in maniera dinamica
-    for (let i = 0; i < localStorage.length; i++) {
+    for (let i = 0; i < localStorage.length; i++) {  //-------------------------6546415649/867465
         if(localStorage.getItem('song_'+i)<lista_prodotti.length){
             continue
         }
@@ -293,17 +293,40 @@ function caricamento(){
         }
     }
 }
-// var a = { Topics: [] }; // define container with empty Topics array
 
-// // add some topics
+//--------------------------------------------------------------------QUI
+function lastAdded(){
+    console.log("ciao")
+    let div = document.getElementById("lista_ultime_aggiunte");
+        for (let i = (localStorage.length-1); i > (localStorage.length-6); i--){
+            var prod = JSON.parse(localStorage.getItem("song_"+i));   
+            console.log(prod);
+            //creo un div per inserire la canzone in maniera dinamica
+            let prodotto = document.createElement("div");
+            let last = document.createElement("div");
+            //aggiungo la classe song
+            prodotto.classList.add("song");
+            last.classList.add("last");
+            //aggiungo un'id
+            prodotto.setAttribute("id",prod.IDProd);
+            let div_immagine = document.createElement("div");
+            let immagine = document.createElement("img");
+            immagine.setAttribute("src",prod.src);
+            immagine.classList.add("immagine");
+            div_immagine.classList.add("div_immagine");
+            div_immagine.appendChild(immagine);
+            
+            let titolo = document.createElement("span");
+            titolo.innerHTML= prod.Titolo;
+            last.appendChild(div_immagine);
+            last.appendChild(titolo);
+            prodotto.setAttribute("class" , "ultime_aggiunte" );
+            prodotto.appendChild(last);
+            div.appendChild(prodotto);
+    }
+}
 
-// a.Topics[1] = { topicId: 1, subTopicId: 1, topicName: "x", subTopicName: "x" };
-// localStorage.setItem("prova" +cont_tot,JSON.stringify(a.Topics[1]));
-// a.Topics[2] = { topicId: 1, subTopicId: 2, topicName: "x", subTopicName: "x" };
-// a.Topics[62] = { topicId: 10, subTopicId: 62, topicName: "x", subTopicName: "x" };
-
-// alert(a.Topics[1].topicName + " - " + a.Topics[1].subTopicName);
-
+//----------------------------------------------------------------------
 function add(){
     cont_prod = localStorage.length;
     let titolo = document.getElementById('Titolo').value;
@@ -407,6 +430,7 @@ function Search(){
         }//chiusura FOR
     }//chiusura ELSE
 }//chiusura FUNZIONE
+
 //FINE FILTRI
 //--------------------------------------------------------------------------------------------
 //funzione per settare nel SessionStorage il carrello aggiornato
