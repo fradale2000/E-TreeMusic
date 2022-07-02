@@ -2,7 +2,7 @@
 var cont = localStorage.length;
 var cont_prod = 0;
 var lista_prodotti= [];
-var carrello = [];
+var carrello_attuale = [];
 var modal = document.getElementById("myModal");
 var div_desc_prod = document.getElementById("div_desc_prod");
 window.onclick = function(event) 
@@ -39,7 +39,8 @@ function caricamento(){
             "Descrizione":'Tratto dall’album Persona, l’artista si dedica a raccontare le sue esperienze personali passate.',
             "Costo":2.59,
             "src": "Immagini/canzoni/CRUDELIA.jpg",
-            "quantita": 0,            
+            "quantita": 0,
+            "somma_costi": 0,            
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodA));
         cont_prod ++;
@@ -52,7 +53,8 @@ function caricamento(){
             "Descrizione":'Drake è uno dei primi 10 artisti più ascoltati nel mondo.',
             "Costo":3.10,
             "src": "Immagini/canzoni/Falling_Back.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodB));
         cont_prod ++;
@@ -65,7 +67,8 @@ function caricamento(){
             "Descrizione":'tratto dall’album Gunna . DS4EVER',
             "Costo":1.50,
             "src": "Immagini/canzoni/Puffin_on_zooties.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodC));
         cont_prod ++;
@@ -78,7 +81,8 @@ function caricamento(){
             "Descrizione":'Hit Estiva',
             "Costo":1.80,
             "src": "Immagini/canzoni/Bimbi_per_strada.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodD));
         cont_prod ++;
@@ -91,7 +95,8 @@ function caricamento(){
             "Descrizione":'Giovane rapper con problemi legali racconta la sua vita per strada',
             "Costo":1.50,
             "src": "Immagini/canzoni/Casablanca.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodE));
         cont_prod ++;
@@ -104,7 +109,8 @@ function caricamento(){
             "Descrizione":' Giovane ragazzo di provincia ci propone uno stile influenzato dalla Francia',
             "Costo":1.20,
             "src": "Immagini/canzoni/Shakerando.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodF));
         cont_prod ++;
@@ -117,7 +123,8 @@ function caricamento(){
             "Descrizione":'Piace alla prof zarini',
             "Costo":0.99,
             "src": "Immagini/canzoni/0ffline.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodG));
         cont_prod ++;
@@ -197,21 +204,24 @@ function caricamento(){
                 div_bottone.appendChild(bottone);
                 div_bottone.addEventListener("click", () =>{
                     let current_prod = lista_prodotti[prodotto.id];
-                    if (carrello.length <=0) {
+                    if (carrello_attuale.length <=0) {
                         current_prod.quantita++;
-                        carrello.push(current_prod);
+                        carrello_attuale.push(current_prod);
+                        SetLocal(carrello_attuale,lista_prodotti,prodotto);
                     }
                     else{
-                        let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+                        let prod_presente = carrello_attuale.find(element => element.IDProd === current_prod.IDProd);
                         if ( prod_presente !== undefined) {
                             prod_presente.quantita++;
+                            SetLocal(carrello_attuale,lista_prodotti,prodotto);
                         } else{
                             current_prod.quantita++;
-                            carrello.push(current_prod);
+                            carrello_attuale.push(current_prod);
+                            SetLocal(carrello_attuale,lista_prodotti,prodotto);
                         }
                     }
-                    console.log(carrello);
-                    SetLocal(carrello,lista_prodotti);
+                    console.log(carrello_attuale);
+                    
                 });
 
                 //append di tutti gli elementi
@@ -251,20 +261,24 @@ function caricamento(){
             div_bottone.appendChild(bottone);
             div_bottone.addEventListener("click", () =>{
                 let current_prod = lista_prodotti[prodotto.id];
-                if (carrello.length <=0) {
+                if (carrello_attuale.length <=0) {
                     current_prod.quantita++;
-                    carrello.push(current_prod);
+                    carrello_attuale.push(current_prod);
+                    SetLocal(carrello_attuale,lista_prodotti,prodotto);
                 }
                 else{
-                    let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+                    let prod_presente = carrello_attuale.find(element => element.IDProd === current_prod.IDProd);
                     if ( prod_presente !== undefined) {
                         prod_presente.quantita++;
+                        SetLocal(carrello_attuale,lista_prodotti,prodotto);
                     } else{
                         current_prod.quantita++;
-                        carrello.push(current_prod);
+                        carrello_attuale.push(current_prod);
+                        SetLocal(carrello_attuale,lista_prodotti,prodotto);
                     }
                 }
-                SetLocal(carrello,lista_prodotti);
+                console.log(carrello_attuale);
+                
             });
 
             //appendo tutto nel div "div_prodotto"
@@ -308,7 +322,8 @@ function add(){
         "Descrizione":Descrizione,
         "Costo":Prezzo,
         "src": "Immagini/TestLogo.png",
-        "capacita": 0,             
+        "quantita": 0,
+        "somma_costi": 0,             
     }
     localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
     cont_prod++;
@@ -389,12 +404,114 @@ function Search(){
                                     }
                             }    
 
-}//chiusura FOR
-}//chiusura ELSE
+        }//chiusura FOR
+    }//chiusura ELSE
 }//chiusura FUNZIONE
-
-
-
-
-                   //FINE SEARCHBAR
+//FINE FILTRI
 //--------------------------------------------------------------------------------------------
+//funzione per settare nel SessionStorage il carrello aggiornato
+function SetLocal(carrello_attuale,lista_prodotti,prodotto){
+    if (sessionStorage.length <=1) {
+        sessionStorage.setItem("carrello",JSON.stringify(carrello_attuale));
+    }
+    else{
+        let carrello_salvato = JSON.parse(sessionStorage.getItem("carrello"));
+        let current_prod = lista_prodotti[prodotto.id];  
+        //controllo nel carrelo salvato se il prodotto corrente(quello selezionato) è già presente nel carrelo
+        let prod_presente = carrello_salvato.find(element => element.IDProd === current_prod.IDProd);
+        if ( prod_presente !== undefined) {
+            sessionStorage.setItem("carrello",JSON.stringify(carrello_attuale));
+        } else{
+            carrello_salvato.push(current_prod);
+            sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
+        }     
+    }
+}
+
+function printCarll(){
+    var div = document.getElementById("record_carrello");
+    let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
+    let prezzo_totale = 0;
+    for (let i = 0; i < carrello_salvato.length; i++){
+        var prod = carrello_salvato[i];
+        let div_immagine = document.createElement("div");
+        let immagine = document.createElement("img");
+        immagine.classList.add("immagine");
+        div_immagine.classList.add("div_immagine");
+        div_immagine.appendChild(immagine);
+        immagine.setAttribute("src",prod.src);
+        let titolo = document.createElement("span");
+        titolo.innerHTML= prod.Titolo;
+        let artista = document.createElement("span");
+        artista.innerHTML= prod.Artista;
+        let anno = document.createElement("span");
+        anno.innerHTML= prod.Anno;
+        // let costo = document.createElement("span");
+        // costo.innerHTML= prod.Costo+ " €";
+        let somma = document.createElement("span");
+        somma.innerHTML = prod.Costo*prod.quantita;
+        let quantita = document.createElement("span");
+        quantita.innerHTML= "Quantità: "+prod.quantita;
+
+            
+        //div per distanziare i bottoni del carrello
+        let div_bottoni_carrello = document.createElement("div_bottoni_carrello");
+        div_bottoni_carrello.classList.add("div_bottoni_carrello");
+        //bottone +
+        let div_bottone_piu = document.createElement("div");
+        let bottone_piu = document.createElement("img");
+        bottone_piu.setAttribute("src","Immagini/vinile+.png");
+        bottone_piu.classList.add("bottone");
+        div_bottone_piu.classList.add("bottoni_carrello");
+        div_bottone_piu.classList.add("div_bottoni_carrello");
+        div_bottone_piu.appendChild(bottone_piu);
+        div_bottone_piu.addEventListener("click", () =>{
+            let current_prod = lista_prodotti[prodotto.id];
+            let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+            if ( prod_presente !== undefined) {
+                prod_presente.quantita++;
+            } else{
+                current_prod.quantita++;
+                carrello.push(current_prod);
+            }
+            console.log(carrello);
+        });
+        div_bottoni_carrello.appendChild(div_bottone_piu);
+
+        //bottone -
+        let div_bottone_meno = document.createElement("div");
+        let bottone_meno = document.createElement("img");
+        bottone_meno.setAttribute("src","Immagini/vinile-.png");
+        bottone_meno.classList.add("bottone");
+        div_bottone_meno.classList.add("bottoni_carrello");
+        div_bottone_meno.classList.add("div_bottoni_carrello");
+        div_bottone_meno.appendChild(bottone_meno);
+        div_bottone_meno.addEventListener("click", () =>{
+            let current_prod = lista_prodotti[prodotto.id];
+            let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+            if ( prod_presente !== undefined) {
+                prod_presente.quantita--;
+            } else{
+                current_prod.quantita--;
+                carrello.push(current_prod);
+            }
+            console.log(carrello);
+        });
+        div_bottoni_carrello.appendChild(div_bottone_meno);
+        //appendo tutto nel div "record_carrello"
+        let prodotto = document.createElement("div");
+        prodotto.setAttribute("class","pro");
+        prodotto.appendChild(div_immagine);
+        prodotto.appendChild(titolo);
+        prodotto.appendChild(artista);
+        prodotto.appendChild(anno);
+        prodotto.appendChild(somma);
+        prodotto.appendChild(quantita);
+        prodotto.appendChild(div_bottoni_carrello);
+        div.appendChild(prodotto);   
+    }
+    div_prezzo = document.createElement("div");
+    prezzo= document.createElement("span");
+    prezzo.innerHTML = prezzo_totale;
+    div.appendChild(div_prezzo);
+}
