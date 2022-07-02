@@ -1,7 +1,9 @@
 // by fradale2000 & Edo(poco)
 var cont = localStorage.length;
 var cont_prod = 0;
+var cont_carrelli = 0;
 var lista_prodotti= [];
+var lista_carrelli = [];
 var carrello_attuale = [];
 var modal = document.getElementById("myModal");
 var div_desc_prod = document.getElementById("div_desc_prod");
@@ -470,9 +472,11 @@ function printCarll(){
             let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
             if ( prod_presente !== undefined) {
                 prod_presente.quantita++;
+                SetLocal(carrello_attuale,lista_prodotti,prodotto);
             } else{
                 current_prod.quantita++;
                 carrello.push(current_prod);
+                SetLocal(carrello_attuale,lista_prodotti,prodotto);
             }
             console.log(carrello);
         });
@@ -491,9 +495,17 @@ function printCarll(){
             let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
             if ( prod_presente !== undefined) {
                 prod_presente.quantita--;
+                if (prod_presente.quantita == 0) {
+                    carrello_attuale.splice(i,1);
+                }
+                SetLocal(carrello_attuale,lista_prodotti,prodotto);
             } else{
                 current_prod.quantita--;
+                if (prod_presente.quantita == 0) {
+                    carrello_attuale.splice(i,1);
+                }
                 carrello.push(current_prod);
+                SetLocal(carrello_attuale,lista_prodotti,prodotto);
             }
             console.log(carrello);
         });
@@ -514,4 +526,17 @@ function printCarll(){
     prezzo= document.createElement("span");
     prezzo.innerHTML = prezzo_totale;
     div.appendChild(div_prezzo);
+}
+
+function CloseCarll(){
+    let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
+    let carrl = {
+        "nome": "carrello_"+ cont_carrelli++,
+        "elementi": carrello_salvato
+    }
+    lista_carrelli.push(carrl);
+    sessionStorage.setItem("lista_carrelli",JSON.stringify(lista_carrelli));
+    carrello_salvato.splice(0,carrello_salvato.length);
+    sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
+    
 }
