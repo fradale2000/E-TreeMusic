@@ -2,7 +2,7 @@
 var cont = localStorage.length;
 var cont_prod = 0;
 var lista_prodotti= [];
-var carrello = [];
+var carrello_attuale = [];
 var modal = document.getElementById("myModal");
 var div_desc_prod = document.getElementById("div_desc_prod");
 window.onclick = function(event) 
@@ -197,21 +197,21 @@ function caricamento(){
                 div_bottone.appendChild(bottone);
                 div_bottone.addEventListener("click", () =>{
                     let current_prod = lista_prodotti[prodotto.id];
-                    if (carrello.length <=0) {
+                    if (carrello_attuale.length <=0) {
                         current_prod.quantita++;
-                        carrello.push(current_prod);
+                        carrello_attuale.push(current_prod);
                     }
                     else{
-                        let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+                        let prod_presente = carrello_attuale.find(element => element.IDProd === current_prod.IDProd);
                         if ( prod_presente !== undefined) {
                             prod_presente.quantita++;
                         } else{
                             current_prod.quantita++;
-                            carrello.push(current_prod);
+                            carrello_attuale.push(current_prod);
                         }
                     }
-                    console.log(carrello);
-                    SetLocal(carrello,lista_prodotti);
+                    console.log(carrello_attuale);
+                    
                 });
 
                 //append di tutti gli elementi
@@ -251,20 +251,24 @@ function caricamento(){
             div_bottone.appendChild(bottone);
             div_bottone.addEventListener("click", () =>{
                 let current_prod = lista_prodotti[prodotto.id];
-                if (carrello.length <=0) {
+                if (carrello_attuale.length <=0) {
                     current_prod.quantita++;
-                    carrello.push(current_prod);
+                    carrello_attuale.push(current_prod);
+                    SetLocal(carrello_attuale,lista_prodotti,prodotto);
                 }
                 else{
-                    let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+                    let prod_presente = carrello_attuale.find(element => element.IDProd === current_prod.IDProd);
                     if ( prod_presente !== undefined) {
                         prod_presente.quantita++;
+                        SetLocal(carrello_attuale,lista_prodotti,prodotto);
                     } else{
                         current_prod.quantita++;
-                        carrello.push(current_prod);
+                        carrello_attuale.push(current_prod);
+                        SetLocal(carrello_attuale,lista_prodotti,prodotto);
                     }
                 }
-                SetLocal(carrello,lista_prodotti);
+                console.log(carrello_attuale);
+                
             });
 
             //appendo tutto nel div "div_prodotto"
@@ -382,12 +386,24 @@ function Search(){
                                     }
                             }    
 
-}//chiusura FOR
-}//chiusura ELSE
+        }//chiusura FOR
+    }//chiusura ELSE
 }//chiusura FUNZIONE
-
-
-
-
-                   //FINE SEARCHBAR
+//FINE FILTRI
 //--------------------------------------------------------------------------------------------
+function SetLocal(carrello_attuale,lista_prodotti,prodotto){
+    if (sessionStorage.length <=1) {
+        sessionStorage.setItem("carrello",JSON.stringify(carrello_attuale));
+    }
+    else{
+        let carrello_salvato = JSON.parse(sessionStorage.getItem("carrello"));
+        let current_prod = lista_prodotti[prodotto.id];  
+        let prod_presente = carrello_salvato.find(element => element.IDProd === current_prod.IDProd);
+        if ( prod_presente !== undefined) {
+            sessionStorage.setItem("carrello",JSON.stringify(carrello_attuale));
+        } else{
+            carrello_salvato.push(current_prod);
+            sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
+        }     
+    }
+}
