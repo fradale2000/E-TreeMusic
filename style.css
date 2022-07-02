@@ -48,6 +48,24 @@ h1{
 #carrello{
   margin-right: 1%;
 }
+
+#searchBar{
+  display: flex;
+}
+
+.search{
+  width: 33%;
+  margin: 0%;
+  padding: 0%;
+  border: 0%;
+}
+
+
+
+
+
+
+
 #Fine{
   padding:20%;
   left:0;
