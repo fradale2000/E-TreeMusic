@@ -1,7 +1,9 @@
 // by fradale2000 & Edo(poco)
 var cont = localStorage.length;
 var cont_prod = 0;
+var cont_carrelli = 0;
 var lista_prodotti= [];
+var lista_carrelli = [];
 var carrello_attuale = [];
 var modal = document.getElementById("myModal");
 var div_desc_prod = document.getElementById("div_desc_prod");
@@ -456,8 +458,15 @@ function printCarll(){
     var div = document.getElementById("record_carrello");
     let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
     let prezzo_totale = 0;
+    let cont_new = 0;
+    while (localStorage.getItem('song_'+cont_new)!= null){
+        lista_prodotti.push(JSON.parse(localStorage.getItem('song_'+cont_new)));
+        cont_new++;
+    }
     for (let i = 0; i < carrello_salvato.length; i++){
         var prod = carrello_salvato[i];
+        let prodotto = document.createElement("div");
+        prodotto.setAttribute("id",prod.IDProd);
         let div_immagine = document.createElement("div");
         let immagine = document.createElement("img");
         immagine.classList.add("immagine");
@@ -474,8 +483,7 @@ function printCarll(){
         // costo.innerHTML= prod.Costo+ " €";
         let somma = document.createElement("span");
         somma.innerHTML = prod.Costo*prod.quantita;
-        let quantita = document.createElement("span");
-        quantita.innerHTML= "Quantità: "+prod.quantita;
+        
 
             
         //div per distanziare i bottoni del carrello
@@ -491,12 +499,14 @@ function printCarll(){
         div_bottone_piu.appendChild(bottone_piu);
         div_bottone_piu.addEventListener("click", () =>{
             let current_prod = lista_prodotti[prodotto.id];
-            let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+            let prod_presente = carrello_salvato.find(element => element.IDProd === current_prod.IDProd);
             if ( prod_presente !== undefined) {
                 prod_presente.quantita++;
+                SetLocal(carrello_salvato,lista_prodotti,prodotto);
             } else{
                 current_prod.quantita++;
                 carrello.push(current_prod);
+                SetLocal(carrello_salvato,lista_prodotti,prodotto);
             }
             console.log(carrello);
         });
@@ -512,18 +522,28 @@ function printCarll(){
         div_bottone_meno.appendChild(bottone_meno);
         div_bottone_meno.addEventListener("click", () =>{
             let current_prod = lista_prodotti[prodotto.id];
-            let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+            let prod_presente = carrello_salvato.find(element => element.IDProd === current_prod.IDProd);
             if ( prod_presente !== undefined) {
                 prod_presente.quantita--;
+                if (prod_presente.quantita == 0) {
+                    carrello_salvato.splice(i,1);
+                }
+                SetLocal(carrello_salvato,lista_prodotti,prodotto);
             } else{
                 current_prod.quantita--;
+                if (prod_presente.quantita == 0) {
+                    carrello_salvato.splice(i,1);
+                }
                 carrello.push(current_prod);
+                SetLocal(carrello_salvato,lista_prodotti,prodotto);
             }
             console.log(carrello);
         });
         div_bottoni_carrello.appendChild(div_bottone_meno);
-        //appendo tutto nel div "record_carrello"
-        let prodotto = document.createElement("div");
+
+        let quantita = document.createElement("span");
+        quantita.innerHTML= "Quantità: "+prod.quantita;
+       
         prodotto.setAttribute("class","pro");
         prodotto.appendChild(div_immagine);
         prodotto.appendChild(titolo);
@@ -538,4 +558,17 @@ function printCarll(){
     prezzo= document.createElement("span");
     prezzo.innerHTML = prezzo_totale;
     div.appendChild(div_prezzo);
+}
+
+function CloseCarll(){
+    let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
+    let carrl = {
+        "nome": "carrello_"+ cont_carrelli++,
+        "elementi": carrello_salvato
+    }
+    lista_carrelli.push(carrl);
+    sessionStorage.setItem("lista_carrelli",JSON.stringify(lista_carrelli));
+    carrello_salvato.splice(0,carrello_salvato.length);
+    sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
+    
 }
