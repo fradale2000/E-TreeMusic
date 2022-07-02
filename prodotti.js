@@ -332,14 +332,14 @@ function Search(){
     else{
         for (let i = 0; i < lista_prodotti.length; i++) {
             if(ART != "" && ANNO=="" && GEN==""){       //SE IL CAMPO ARTISTA NON è VUOTO E GLI ALTRI SI,ENTRA
-                if(ART == lista_prodotti[i].Artista){    
+                if(ART.toUpperCase() == (lista_prodotti[i].Artista).toUpperCase()){   
                                       document.getElementById(i).style.display = "block";   
                                 }else{
                                     document.getElementById(i).style.display = "none";   
                                 } }
 
             if (ANNO != "" && ART =="" && GEN==""){              //SE IL CAMPO ANNO NON è VUOTO E GLI ALTRI SI,ENTRA
-                if(ANNO == lista_prodotti[i].Anno){      
+                if(ANNO.toUpperCase() == (lista_prodotti[i].Anno).toUpperCase()){      
                                     document.getElementById(i).style.display = "block";   
                             }else{ 
                                     document.getElementById(i).style.display = "none";
@@ -347,7 +347,7 @@ function Search(){
                             }
 
             if(GEN != "" && ANNO=="" && ART==""){                //SE IL CAMPO GENERE NON è VUOTO E GLI ALTRI SI,ENTRA               
-                if(GEN == lista_prodotti[i].Genere){    
+                if(GEN.toUpperCase() == (lista_prodotti[i].Genere).toUpperCase()){    
                                     document.getElementById(i).style.display = "block";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
@@ -355,7 +355,7 @@ function Search(){
                         }
 
             if(ART != "" && ANNO != "" && GEN == ""){           //SE IL CAMPO ARTISTA E ANNO NON SONO VUOTI ENTRA
-                if(ART == lista_prodotti[i].Artista && ANNO == lista_prodotti[i].Anno){    
+                if(ART.toUpperCase() == (lista_prodotti[i].Artista).toUpperCase() && ANNO.toUpperCase() == (lista_prodotti[i].Anno).toUpperCase()){    
                                     document.getElementById(i).style.display = "block";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
@@ -363,7 +363,7 @@ function Search(){
                             }
 
             if(ART != "" && ANNO == "" && GEN != ""){      //SE IL CAMPO ARTISTA E GENERE NON SONO VUOTI ENTRA
-                if(ART == lista_prodotti[i].Artista && GEN == lista_prodotti[i].Genere){    
+                if(ART.toUpperCase() == (lista_prodotti[i].Artista).toUpperCase() && GEN.toUpperCase() == (lista_prodotti[i].Genere).toUpperCase()){    
                                     document.getElementById(i).style.display = "block";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
@@ -371,7 +371,7 @@ function Search(){
                             }
                             
             if(ART == "" && ANNO != "" && GEN != ""){      //SE IL CAMPO ANNO E GENERE NON SONO VUOTI ENTRA
-                if(ANNO == lista_prodotti[i].Anno && GEN == lista_prodotti[i].Genere){    
+                if(ANNO.toUpperCase() == (lista_prodotti[i].Anno).toUpperCase() && GEN.toUpperCase() == (lista_prodotti[i].Genere).toUpperCase()){    
                                     document.getElementById(i).style.display = "block";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
@@ -379,7 +379,7 @@ function Search(){
                             }     
                             
             if(ART != "" && ANNO != "" && GEN != ""){      //SE TUTTI I CAMPI NON SONO VUOTI,ENTRA
-                if(ART == lista_prodotti[i].Artista && ANNO == lista_prodotti[i].Anno && GEN == lista_prodotti[i].Genere){    
+                if(ART.toUpperCase() == (lista_prodotti[i].Artista).toUpperCase() && ANNO.toUpperCase() == (lista_prodotti[i].Anno).toUpperCase() && GEN.toUpperCase() == (lista_prodotti[i].Genere).toUpperCase()){    
                                     document.getElementById(i).style.display = "block";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
