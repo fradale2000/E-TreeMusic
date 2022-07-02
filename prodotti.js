@@ -39,7 +39,8 @@ function caricamento(){
             "Descrizione":'Tratto dall’album Persona, l’artista si dedica a raccontare le sue esperienze personali passate.',
             "Costo":2.59,
             "src": "Immagini/canzoni/CRUDELIA.jpg",
-            "quantita": 0,            
+            "quantita": 0,
+            "somma_costi": 0,            
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodA));
         cont_prod ++;
@@ -52,7 +53,8 @@ function caricamento(){
             "Descrizione":'Drake è uno dei primi 10 artisti più ascoltati nel mondo.',
             "Costo":3.10,
             "src": "Immagini/canzoni/Falling_Back.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodB));
         cont_prod ++;
@@ -65,7 +67,8 @@ function caricamento(){
             "Descrizione":'tratto dall’album Gunna . DS4EVER',
             "Costo":1.50,
             "src": "Immagini/canzoni/Puffin_on_zooties.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodC));
         cont_prod ++;
@@ -78,7 +81,8 @@ function caricamento(){
             "Descrizione":'Hit Estiva',
             "Costo":1.80,
             "src": "Immagini/canzoni/Bimbi_per_strada.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodD));
         cont_prod ++;
@@ -91,7 +95,8 @@ function caricamento(){
             "Descrizione":'Giovane rapper con problemi legali racconta la sua vita per strada',
             "Costo":1.50,
             "src": "Immagini/canzoni/Casablanca.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodE));
         cont_prod ++;
@@ -104,7 +109,8 @@ function caricamento(){
             "Descrizione":' Giovane ragazzo di provincia ci propone uno stile influenzato dalla Francia',
             "Costo":1.20,
             "src": "Immagini/canzoni/Shakerando.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodF));
         cont_prod ++;
@@ -117,7 +123,8 @@ function caricamento(){
             "Descrizione":'Piace alla prof zarini',
             "Costo":0.99,
             "src": "Immagini/canzoni/0ffline.jpg",
-            "quantita": 0,              
+            "quantita": 0,
+            "somma_costi": 0,              
         }
         localStorage.setItem("song_" +cont_prod,JSON.stringify(prodG));
         cont_prod ++;
@@ -315,7 +322,8 @@ function add(){
         "Descrizione":Descrizione,
         "Costo":Prezzo,
         "src": "Immagini/TestLogo.png",
-        "capacita": 0,             
+        "quantita": 0,
+        "somma_costi": 0,             
     }
     localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
     cont_prod++;
@@ -431,10 +439,12 @@ function printCarll(){
         artista.innerHTML= prod.Artista;
         let anno = document.createElement("span");
         anno.innerHTML= prod.Anno;
-        let costo = document.createElement("span");
-        costo.innerHTML= prod.Costo+ " €";
+        // let costo = document.createElement("span");
+        // costo.innerHTML= prod.Costo+ " €";
+        let somma = document.createElement("span");
+        somma.innerHTML = prod.Costo*prod.quantita;
         let quantita = document.createElement("span");
-        quantita.innerHTML= prod.quantita;
+        quantita.innerHTML= "Quantità: "+prod.quantita;
 
             
         //div per distanziare i bottoni del carrello
@@ -488,7 +498,7 @@ function printCarll(){
         prodotto.appendChild(titolo);
         prodotto.appendChild(artista);
         prodotto.appendChild(anno);
-        prodotto.appendChild(costo);
+        prodotto.appendChild(somma);
         prodotto.appendChild(quantita);
         prodotto.appendChild(div_bottoni_carrello);
         div.appendChild(prodotto);   
