@@ -196,8 +196,22 @@ function caricamento(){
                 div_bottone.classList.add("div_bottone");
                 div_bottone.appendChild(bottone);
                 div_bottone.addEventListener("click", () =>{
-                    carrello.push(prod);
+                    let current_prod = lista_prodotti[prodotto.id];
+                    if (carrello.length <=0) {
+                        current_prod.quantita++;
+                        carrello.push(current_prod);
+                    }
+                    else{
+                        let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+                        if ( prod_presente !== undefined) {
+                            prod_presente.quantita++;
+                        } else{
+                            current_prod.quantita++;
+                            carrello.push(current_prod);
+                        }
+                    }
                     console.log(carrello);
+                    SetLocal(carrello,lista_prodotti);
                 });
 
                 //append di tutti gli elementi
@@ -237,9 +251,20 @@ function caricamento(){
             div_bottone.appendChild(bottone);
             div_bottone.addEventListener("click", () =>{
                 let current_prod = lista_prodotti[prodotto.id];
-                carrello.push(current_prod);
-                console.log(carrello);
-
+                if (carrello.length <=0) {
+                    current_prod.quantita++;
+                    carrello.push(current_prod);
+                }
+                else{
+                    let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+                    if ( prod_presente !== undefined) {
+                        prod_presente.quantita++;
+                    } else{
+                        current_prod.quantita++;
+                        carrello.push(current_prod);
+                    }
+                }
+                SetLocal(carrello,lista_prodotti);
             });
 
             //appendo tutto nel div "div_prodotto"
@@ -287,4 +312,9 @@ function add(){
     }
     localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
     cont_prod++;
+}
+function SetLocal(carrello,lista_prodotti) {
+    if (carrello) {
+        
+    }
 }

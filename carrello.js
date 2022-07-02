@@ -1,9 +1,8 @@
 function printCarll(){
     var div = document.getElementById("record_carrello");
     
-    for (let i = 0; i < localStorage.length; i++){
-        localStorage.getItem("song_" +i,JSON.stringify(prod));
-        var prod = JSON.parse(localStorage.getItem("song_"+i));
+    for (let i = 0; i < carrello.length; i++){
+        var prod = carrello[i];
         let div_immagine = document.createElement("div");
         let immagine = document.createElement("img");
         immagine.classList.add("immagine");
@@ -31,10 +30,18 @@ function printCarll(){
         div_bottone_piu.classList.add("div_bottoni_carrello");
         div_bottone_piu.appendChild(bottone_piu);
         div_bottone_piu.addEventListener("click", () =>{
-            carrello.push(prod);
+            let current_prod = lista_prodotti[prodotto.id];
+            let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+            if ( prod_presente !== undefined) {
+                prod_presente.quantita++;
+            } else{
+                current_prod.quantita++;
+                carrello.push(current_prod);
+            }
             console.log(carrello);
         });
         div_bottoni_carrello.appendChild(div_bottone_piu);
+
         //bottone -
         let div_bottone_meno = document.createElement("div");
         let bottone_meno = document.createElement("img");
@@ -44,7 +51,14 @@ function printCarll(){
         div_bottone_meno.classList.add("div_bottoni_carrello");
         div_bottone_meno.appendChild(bottone_meno);
         div_bottone_meno.addEventListener("click", () =>{
-            carrello.push(prod);
+            let current_prod = lista_prodotti[prodotto.id];
+            let prod_presente = carrello.find(element => element.IDProd === current_prod.IDProd);
+            if ( prod_presente !== undefined) {
+                prod_presente.quantita--;
+            } else{
+                current_prod.quantita--;
+                carrello.push(current_prod);
+            }
             console.log(carrello);
         });
         div_bottoni_carrello.appendChild(div_bottone_meno);
