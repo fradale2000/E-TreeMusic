@@ -581,7 +581,7 @@ function printCarll(){
         let quantita = document.createElement("span");
         quantita.innerHTML= "Quantità: "+prod.quantita;
         prodotto.setAttribute("class","pro");
-        prodotto.appendChild(div_immagine);
+        prodotto.appendChild(div_immagine);                        
         prodotto.appendChild(titolo);
         prodotto.appendChild(artista);
         prodotto.appendChild(anno);
@@ -631,4 +631,81 @@ function CloseCarll(){
         sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
         location.reload();
     }
+}
+
+
+// --------------------------------------------------------------------------------------
+//                                REPORT CARRELLI
+
+function reportCart(){
+    let div = document.getElementById("Reportlist");
+
+    let carts_list = JSON.parse(sessionStorage.getItem('lista_carrelli'));
+    console.log(carts_list);
+    for(let i=0; i <carts_list.length;i++){
+            let cart = carts_list[i];  
+            console.log("---------")  ;  
+            var Single = document.createElement("div");               //console.log(carts_list[i]);//singoli carrelli
+            for(let y=0; y < (cart.elementi.length) ; y++){
+                let prod = (cart.elementi[y]);
+                console.log(prod);
+                let prodotto = document.createElement("div");
+                let report = document.createElement("div");
+
+                //aggiungo la classe song
+                prodotto.classList.add("song");
+                report.classList.add("report");
+                Single.classList.add("Single");
+                //aggiungo un'id
+                prodotto.setAttribute("id",prod.IDProd);
+
+                Single.setAttribute("id",cart.nome);
+
+
+                let div_immagine = document.createElement("div");
+                let immagine = document.createElement("img");
+                immagine.setAttribute("src",prod.src);
+                immagine.classList.add("immagine");
+                div_immagine.classList.add("div_immagine");
+                div_immagine.appendChild(immagine);
+                let titolo = document.createElement("span");
+                titolo.innerHTML= prod.Titolo;
+
+                report.appendChild(div_immagine);
+                report.appendChild(titolo);
+                prodotto.setAttribute("class" , "Report" );
+                prodotto.appendChild(report);
+                Single.appendChild(prodotto);
+                console.log(Single);
+            }
+            div.appendChild(Single);
+        
+    }
+
+//     for (let i = (localStorage.length-1); i > (localStorage.length-6); i--){
+//         var prod = JSON.parse(localStorage.getItem("song_"+i));   
+//         console.log(prod);
+//         //creo un div per inserire la canzone in maniera dinamica
+//         let prodotto = document.createElement("div");
+//         let last = document.createElement("div");
+//         //aggiungo la classe song
+//         prodotto.classList.add("song");
+//         last.classList.add("last");
+//         //aggiungo un'id
+//         prodotto.setAttribute("id",prod.IDProd);
+//         let div_immagine = document.createElement("div");
+//         let immagine = document.createElement("img");
+//         immagine.setAttribute("src",prod.src);
+//         immagine.classList.add("immagine");
+//         div_immagine.classList.add("div_immagine");
+//         div_immagine.appendChild(immagine);
+//         let titolo = document.createElement("span");
+//         titolo.innerHTML= prod.Titolo;
+//         last.appendChild(div_immagine);
+//         last.appendChild(titolo);
+//         prodotto.setAttribute("class" , "ultime_aggiunte" );
+//         prodotto.appendChild(last);
+//         div.appendChild(prodotto);
+// }
+
 }
