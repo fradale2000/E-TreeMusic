@@ -5,6 +5,8 @@ var cont_carrelli = 0;
 var lista_prodotti= [];
 var lista_carrelli = [];
 var carrello_attuale = [];
+var elem_carrello = document.getElementById("cont_carrello");
+var cont_elem_carrello= 0;
 var modal = document.getElementById("myModal");
 var div_desc_prod = document.getElementById("div_desc_prod");
 window.onclick = function(event) 
@@ -222,6 +224,8 @@ function caricamento(){
                             SetLocal(carrello_attuale,lista_prodotti,prodotto);
                         }
                     }
+                    cont_elem_carrello++;
+                    elem_carrello.innerHTML = cont_elem_carrello;
                     console.log(carrello_attuale);
                     
                 });
@@ -279,6 +283,8 @@ function caricamento(){
                         SetLocal(carrello_attuale,lista_prodotti,prodotto);
                     }
                 }
+                cont_elem_carrello++;
+                elem_carrello.innerHTML = cont_elem_carrello;
                 console.log(carrello_attuale);
                 
             });
@@ -502,10 +508,12 @@ function printCarll(){
             let prod_presente = carrello_salvato.find(element => element.IDProd === current_prod.IDProd);
             if ( prod_presente !== undefined) {
                 prod_presente.quantita++;
+                location.reload();
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             } else{
                 current_prod.quantita++;
                 carrello.push(current_prod);
+                location.reload();
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             }
             console.log(carrello);
@@ -528,6 +536,7 @@ function printCarll(){
                 if (prod_presente.quantita == 0) {
                     carrello_salvato.splice(i,1);
                 }
+                location.reload();
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             } else{
                 current_prod.quantita--;
@@ -535,6 +544,7 @@ function printCarll(){
                     carrello_salvato.splice(i,1);
                 }
                 carrello.push(current_prod);
+                location.reload();
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             }
             console.log(carrello);
@@ -570,5 +580,6 @@ function CloseCarll(){
     sessionStorage.setItem("lista_carrelli",JSON.stringify(lista_carrelli));
     carrello_salvato.splice(0,carrello_salvato.length);
     sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
+    location.reload();
     
 }
