@@ -28,16 +28,7 @@ function caricamento(){
         lista_prodotti.push(JSON.parse(localStorage.getItem('song_'+cont_new)));
         cont_new++;
     }
-    //localStorage.clear();
-    //vari contatori per for oppure crezione di oggetti
-
-    // let c = 0;
-    // if (c == 0) {
-    //     localStorage.clear();
-    //     c++;
-    // }
-    //creo un tot di oggetti tramite for
-           //for (let i = 0; i < 5; i++) {                                    /////TEST\\\\
+                                  /////TEST\\\\
         let prodA= {
             "IDProd":cont_prod,
             "Titolo": 'CRUDELIA - i nervi' ,
@@ -202,7 +193,7 @@ function caricamento(){
                 costo.innerHTML= ` Costo:${div_cliccabile.children[4].innerHTML} `;
                 costo.classList.add("modal-div_desc_prod-content");
 
-                //bottone
+                //bottone per aggiungere al carrello
                 let div_bottone = document.createElement("div");
                 let bottone = document.createElement("img");
                 bottone.setAttribute("src","Immagini/vinile+.png");
@@ -214,9 +205,10 @@ function caricamento(){
                     if (carrello_attuale.length <=0) {
                         current_prod.quantita++;
                         carrello_attuale.push(current_prod);
-                        SetLocal(carrello_attuale,lista_prodotti,prodotto);
+                        SetLocal(carrello_attuale,lista_prodotti,prodotto); //aggiorno il carrello
                     }
                     else{
+                        //controllo se essite già un'brano uguale nel carrelo così incremento la quantità
                         let prod_presente = carrello_attuale.find(element => element.IDProd === current_prod.IDProd);
                         if ( prod_presente !== undefined) {
                             prod_presente.quantita++;
@@ -232,7 +224,6 @@ function caricamento(){
                     console.log(carrello_attuale);
                     
                 });
-
                 //append di tutti gli elementi
                 div_desc_prod.appendChild(div_immagine);
                 div_desc_prod.appendChild(titolo);
@@ -246,6 +237,7 @@ function caricamento(){
             });
             //            FINE MODAL
 //-----------------------------------------------------------
+            //immagine
             let div_immagine = document.createElement("div");
             let immagine = document.createElement("img");
             immagine.setAttribute("src",prod.src);
@@ -253,6 +245,7 @@ function caricamento(){
             div_immagine.classList.add("div_immagine");
             div_immagine.appendChild(immagine);
             
+            //titolo
             let titolo = document.createElement("span");
             titolo.innerHTML= prod.Titolo;
             let artista = document.createElement("span");
@@ -262,6 +255,7 @@ function caricamento(){
             let costo = document.createElement("span");
             costo.innerHTML= prod.Costo+ " €";
             
+            //titolo
             let div_bottone = document.createElement("div");
             let bottone = document.createElement("img");
             bottone.setAttribute("src","Immagini/vinile+.png");
@@ -291,7 +285,6 @@ function caricamento(){
                 console.log(carrello_attuale);
                 
             });
-
             //appendo tutto nel div "div_prodotto"
             div_cliccabile.appendChild(div_immagine);
             div_cliccabile.appendChild(titolo);
@@ -304,6 +297,7 @@ function caricamento(){
         }
  
     }
+    //piccolo ciclo per far visualizzare il numero di prodotti in alto all'icone del carrello
     if (sessionStorage.length >= 2) {
         for (let i = 0; i < carrello_attuale.length; i++) {
             cont_elem_carrello += carrello_attuale[i].quantita;
@@ -314,7 +308,7 @@ function caricamento(){
 }
 
 //--------------------------------------------------------------------QUI
-function lastAdded(){
+function lastAdded(){ //funzione per la lista degli ultimi brani aggiunti
     let div = document.getElementById("lista_ultime_aggiunte");
         for (let i = (localStorage.length-1); i > (localStorage.length-6); i--){
             var prod = JSON.parse(localStorage.getItem("song_"+i));   
@@ -328,12 +322,13 @@ function lastAdded(){
             //aggiungo un'id
             prodotto.setAttribute("id",prod.IDProd);
             let div_immagine = document.createElement("div");
+            //immagine
             let immagine = document.createElement("img");
             immagine.setAttribute("src",prod.src);
             immagine.classList.add("immagine");
             div_immagine.classList.add("div_immagine");
             div_immagine.appendChild(immagine);
-            
+            //titolo
             let titolo = document.createElement("span");
             titolo.innerHTML= prod.Titolo;
             last.appendChild(div_immagine);
@@ -345,8 +340,10 @@ function lastAdded(){
 }
 
 //----------------------------------------------------------------------
-function add(){
+function add(){//funzione per aggiunta di brano
     cont_prod = localStorage.length;
+    let lista_prodotti = [];
+    
     let titolo = document.getElementById('Titolo').value;
     let Art = document.getElementById('Artista').value;
     let Anno = document.getElementById('Anno').value;
@@ -366,8 +363,21 @@ function add(){
         "quantita": 0,
         "somma_costi": 0,             
     }
-    localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
-    cont_prod++;
+    //ripopolo la lista_prodotti
+    for (let i = 0; i < localStorage.length; i++) {
+        let prodotto = JSON.parse(localStorage.getItem("song_"+i));
+        lista_prodotti.push(prodotto);        
+    }
+    //controllo se esiste già un brano con un'artita con quelli già presenti in lista_prodotto
+    let prod_presente = lista_prodotti.find(element => (element.Titolo.toUpperCase() === titolo.toUpperCase()) 
+                                            && (element.Artista.toUpperCase() === Art.toUpperCase()));
+    if (prod_presente !== undefined) {
+        alert("E' gia presente il brano : "+ titolo + "\n con artista : "+ Art);
+    }
+    else{
+        localStorage.setItem("song_" +cont_prod,JSON.stringify(new_prod));
+        cont_prod++;
+    }
 }
 //-----------------------------------------------------------------------------------------
 //     FILTRI DI RICERCA 
@@ -455,12 +465,14 @@ function Search(){
 function SetLocal(carrello_attuale,lista_prodotti,prodotto){
     
     if (sessionStorage.length <=1) {
+        //se non è stato creato aggiungo
         sessionStorage.setItem("carrello",JSON.stringify(carrello_attuale));
     }
     else{
+        //scarico il carrello salvato
         let carrello_salvato = JSON.parse(sessionStorage.getItem("carrello"));
         let current_prod = lista_prodotti[prodotto.id];  
-        //controllo nel carrelo salvato se il prodotto corrente(quello selezionato) è già presente nel carrelo
+        //controllo nel carrelo salvato se il prodotto corrente(quello selezionato) è già presente nel carrello
         let prod_presente = carrello_salvato.find(element => element.IDProd === current_prod.IDProd);
         if ( prod_presente !== undefined) {
             sessionStorage.setItem("carrello",JSON.stringify(carrello_attuale));
@@ -471,7 +483,7 @@ function SetLocal(carrello_attuale,lista_prodotti,prodotto){
     }
 }
 
-function printCarll(){
+function printCarll(){ //funzione per stampare il contenuto del carrello
     var div = document.getElementById("record_carrello");
     let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
     var elem_carrello = document.getElementById("cont_carrello");
@@ -482,34 +494,39 @@ function printCarll(){
         lista_prodotti.push(JSON.parse(localStorage.getItem('song_'+cont_new)));
         cont_new++;
     }
+
     for (let i = 0; i < carrello_salvato.length; i++) {
         cont_elem_carrello += carrello_salvato[i].quantita;
     }
     elem_carrello.innerHTML = cont_elem_carrello;
+
     for (let i = 0; i < carrello_salvato.length; i++){
         var prod = carrello_salvato[i];
         let prodotto = document.createElement("div");
         prodotto.setAttribute("id",prod.IDProd);
+        //immagine
         let div_immagine = document.createElement("div");
         let immagine = document.createElement("img");
         immagine.classList.add("immagine");
         div_immagine.classList.add("div_immagine");
         div_immagine.appendChild(immagine);
         immagine.setAttribute("src",prod.src);
+        //titolo
         let titolo = document.createElement("span");
         titolo.innerHTML= prod.Titolo;
+        //artista
         let artista = document.createElement("span");
         artista.innerHTML= prod.Artista;
+        //anno
         let anno = document.createElement("span");
         anno.innerHTML= prod.Anno;
-        // let costo = document.createElement("span");
-        // costo.innerHTML= prod.Costo+ " €";
+        //somma
         let somma = document.createElement("span");
         somma.value = prod.Costo * prod.quantita;
+        somma.value.toFixed(2);
+        somma.innerHTML = somma.value;
         prod.somma_costi = parseFloat(somma.value);
         prezzo_totale += parseFloat(somma.value);
-
-            
         //div per distanziare i bottoni del carrello
         let div_bottoni_carrello = document.createElement("div_bottoni_carrello");
         div_bottoni_carrello.classList.add("div_bottoni_carrello");
@@ -590,11 +607,7 @@ function printCarll(){
         prodotto.appendChild(div_bottoni_carrello);
         div.appendChild(prodotto);   
     }
-    div_prezzo = document.createElement("div");
-    prezzo= document.createElement("span");
-    prezzo.innerHTML = prezzo_totale;
-    div.appendChild(div_prezzo);
-    btn_compra.value = "COMPRA " +prezzo_totale +" €";
+    btn_compra.value = "COMPRA " +prezzo_totale.toFixed(2) +" €";
 }
 
 function CloseCarll(){
