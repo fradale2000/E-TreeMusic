@@ -104,12 +104,8 @@ div.album:hover  .vinyl {
 
 #carrello{
   margin-right: 1%;
-<<<<<<< HEAD
-  margin-top: -10px;
-=======
   display: flex;
   text-align: center;
->>>>>>> 2ed41d4a3cf17af35afb5b63afe4ab827adb9030
 }
 
 #searchBar{

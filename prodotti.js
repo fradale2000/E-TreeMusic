@@ -304,7 +304,6 @@ function caricamento(){
 
 //--------------------------------------------------------------------QUI
 function lastAdded(){
-    console.log("ciao")
     let div = document.getElementById("lista_ultime_aggiunte");
         for (let i = (localStorage.length-1); i > (localStorage.length-6); i--){
             var prod = JSON.parse(localStorage.getItem("song_"+i));   
@@ -469,6 +468,9 @@ function printCarll(){
         lista_prodotti.push(JSON.parse(localStorage.getItem('song_'+cont_new)));
         cont_new++;
     }
+    for (let i = 0; i < carrello_salvato.length; i++) {
+        cont_elem_carrello += carrello_salvato[i].quantita;
+    }
     for (let i = 0; i < carrello_salvato.length; i++){
         var prod = carrello_salvato[i];
         let prodotto = document.createElement("div");
@@ -517,6 +519,8 @@ function printCarll(){
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             }
             console.log(carrello);
+            cont_elem_carrello++;
+            elem_carrello.innerHTML = cont_elem_carrello;
         });
         div_bottoni_carrello.appendChild(div_bottone_piu);
 
@@ -548,6 +552,8 @@ function printCarll(){
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             }
             console.log(carrello);
+            cont_elem_carrello--;
+            elem_carrello.innerHTML = cont_elem_carrello;
         });
         div_bottoni_carrello.appendChild(div_bottone_meno);
 
@@ -571,15 +577,30 @@ function printCarll(){
 }
 
 function CloseCarll(){
-    let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
-    let carrl = {
-        "nome": "carrello_"+ cont_carrelli++,
-        "elementi": carrello_salvato
+    if (sessionStorage.length <= 2 ) {
+        let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
+        let carrl = {
+            "nome": "carrello_"+(lista_carrelli.length),
+            "elementi": carrello_salvato
+        }
+        lista_carrelli.push(carrl);
+        sessionStorage.setItem("lista_carrelli",JSON.stringify(lista_carrelli));
+        carrello_salvato.splice(0,carrello_salvato.length);
+        sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
+        location.reload();
     }
-    lista_carrelli.push(carrl);
-    sessionStorage.setItem("lista_carrelli",JSON.stringify(lista_carrelli));
-    carrello_salvato.splice(0,carrello_salvato.length);
-    sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
-    location.reload();
+    else {
+        let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
+        lista_carrelli = JSON.parse(sessionStorage.getItem("lista_carrelli"));
+        let carrl = {
+            "nome": "carrello_"+ (lista_carrelli.length),
+            "elementi": carrello_salvato
+        }
+        lista_carrelli.push(carrl);
+        sessionStorage.setItem("lista_carrelli",JSON.stringify(lista_carrelli));
+        carrello_salvato.splice(0,carrello_salvato.length);
+        sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
+        location.reload();
+    }
     
 }
