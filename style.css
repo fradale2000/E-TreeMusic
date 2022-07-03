@@ -14,7 +14,13 @@ a {
   }
 #body{
   margin: 0%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  width: 100%;
+  height: 100%;
+}
+html{
+  width: 100%;
+  height: 100%;
 }
 #navBar{
   display: flex;
@@ -35,7 +41,7 @@ h1{
 }
 
 #logop{
-  margin-top: 10px;
+  margin-top: -20px;
   height: 80px;
   width:80px ;
 }
@@ -45,8 +51,60 @@ h1{
   margin-top: 5px;
 }
 
+/* inizio album animato*/ 
+
+.vinyl {
+	position:absolute;
+	height:50px;
+	width:50px;
+	z-index: -11;
+    display: block;
+    -webkit-transition: all .25s ease-out;
+	transition: all .25s ease-out;
+	background-image:url(immagini/vinyl.png);
+	background-size: 50px 50px;	
+  margin-top: -25px;
+	
+}
+
+.cover{
+	position:absolute;
+	height:50px;
+	width:50px;
+	z-index: 33;
+	background-image:url(immagini/cover_vinile.png);
+	background-size: 50px 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
+.album {
+
+	height:50px;
+	width:50px;
+	float:left;
+	margin-top:10px;	
+}
+
+div.album:hover  .vinyl {
+
+	-webkit-transform:  translateX(50px) rotate(195deg);
+    -moz-transform:  translateX(50px) rotate(195deg);
+    -ms-transform:  translateX(50px) rotate(195deg);
+    -o-transform:  translateX(50px) rotate(195deg);
+    transform:  translateX(50px) rotate(195deg);
+}
+
+
+
+/* fine album animato*/
+
+
+
+
 #carrello{
   margin-right: 1%;
+  margin-top: -10px;
 }
 
 #searchBar{
@@ -68,6 +126,9 @@ h1{
       width: auto;
 } }
 
+#lista_ultime_aggiunte{
+  display: flex;
+}
 
 .ultime_aggiunte{
   border-radius: 25px;
