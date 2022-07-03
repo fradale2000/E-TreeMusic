@@ -657,13 +657,25 @@ function reportCart(){
     console.log(carts_list);
     for(let i=0; i <carts_list.length;i++){
             let cart = carts_list[i];  
-            console.log("---------")  ;  
+            console.log("---------")  ;
+            let info = document.createElement("div");//div per tutte le info sul carrello
+            let nome = document.createElement("span");
+            nome.innerHTML="Nome: "+ cart.nome;
+            let data = document.createElement("span");
+            data.innerHTML = "Data: "+cart.data;
+            let prezzo = document.createElement("span");
+            prezzo.innerHTML= "Prezzo: "+ cart.prezzo;
+            info.style.display = "flex";  
+            info.style.margin= "1%";
+            info.style.padding= "2%";
             var Single = document.createElement("div");               //console.log(carts_list[i]);//singoli carrelli
             for(let y=0; y < (cart.elementi.length) ; y++){
                 let prod = (cart.elementi[y]);
                 console.log(prod);
+                
                 let prodotto = document.createElement("div");
                 let report = document.createElement("div");
+                
 
                 //aggiungo la classe song
                 prodotto.classList.add("song");
@@ -691,6 +703,10 @@ function reportCart(){
                 Single.appendChild(prodotto);
                 console.log(Single);
             }
+            info.appendChild(nome);
+            info.appendChild(data);
+            info.appendChild(prezzo);
+            div.appendChild(info);
             div.appendChild(Single);
         
     }
