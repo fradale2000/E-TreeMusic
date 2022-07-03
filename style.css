@@ -86,13 +86,29 @@ h1{
 	margin-top:10px;	
 }
 
-div.album:hover  .vinyl {
+div.album:hover  #vinyl1 {
 
-	-webkit-transform:  translateX(50px) rotate(195deg);
-    -moz-transform:  translateX(50px) rotate(195deg);
-    -ms-transform:  translateX(50px) rotate(195deg);
-    -o-transform:  translateX(50px) rotate(195deg);
-    transform:  translateX(50px) rotate(195deg);
+	-webkit-transform:  translateX(75px) rotate(195deg);
+    -moz-transform:  translateX(75px) rotate(195deg);
+    -ms-transform:  translateX(75px) rotate(195deg);
+    -o-transform:  translateX(75px) rotate(195deg);
+    transform:  translateX(75px) rotate(195deg);
+}
+div.album:hover  #vinyl2 {
+
+	-webkit-transform:  translateX(55px) rotate(195deg);
+    -moz-transform:  translateX(55px) rotate(195deg);
+    -ms-transform:  translateX(55px) rotate(195deg);
+    -o-transform:  translateX(55px) rotate(195deg);
+    transform:  translateX(55px) rotate(195deg);
+}
+div.album:hover  #vinyl3 {
+
+	-webkit-transform:  translateX(35px) rotate(195deg);
+    -moz-transform:  translateX(35px) rotate(195deg);
+    -ms-transform:  translateX(35px) rotate(195deg);
+    -o-transform:  translateX(35px) rotate(195deg);
+    transform:  translateX(35px) rotate(195deg);
 }
 
 
