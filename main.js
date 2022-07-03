@@ -453,6 +453,7 @@ function Search(){
 //--------------------------------------------------------------------------------------------
 //funzione per settare nel SessionStorage il carrello aggiornato
 function SetLocal(carrello_attuale,lista_prodotti,prodotto){
+    
     if (sessionStorage.length <=1) {
         sessionStorage.setItem("carrello",JSON.stringify(carrello_attuale));
     }
@@ -474,6 +475,7 @@ function printCarll(){
     var div = document.getElementById("record_carrello");
     let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
     var elem_carrello = document.getElementById("cont_carrello");
+    let btn_compra = document.getElementById("compra_carrello");
     let prezzo_totale = 0;
     let cont_new = 0;
     while (localStorage.getItem('song_'+cont_new)!= null){
@@ -503,8 +505,9 @@ function printCarll(){
         // let costo = document.createElement("span");
         // costo.innerHTML= prod.Costo+ " €";
         let somma = document.createElement("span");
-        somma.innerHTML = prod.Costo*prod.quantita;
-        
+        somma.value = prod.Costo * prod.quantita;
+        prod.somma_costi = parseFloat(somma.value);
+        prezzo_totale += parseFloat(somma.value);
 
             
         //div per distanziare i bottoni del carrello
@@ -524,10 +527,12 @@ function printCarll(){
             if ( prod_presente !== undefined) {
                 prod_presente.quantita++;
                 location.reload();
+                prezzo_totale += prod_presente.Prezzo;
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             } else{
                 current_prod.quantita++;
                 carrello.push(current_prod);
+                prezzo_totale += prod_presente.Prezzo;
                 location.reload();
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             }
@@ -552,11 +557,13 @@ function printCarll(){
                 prod_presente.quantita--;
                 if (prod_presente.quantita == 0) {
                     carrello_salvato.splice(i,1);
+                    prezzo_totale -= prod_presente.Prezzo;
                 }
                 location.reload();
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             } else{
                 current_prod.quantita--;
+                prezzo_totale -= prod_presente.Prezzo;
                 if (prod_presente.quantita == 0) {
                     carrello_salvato.splice(i,1);
                 }
@@ -568,11 +575,11 @@ function printCarll(){
             cont_elem_carrello--;
             elem_carrello.innerHTML = cont_elem_carrello;
         });
+        SetLocal(carrello_salvato,lista_prodotti,prodotto);
         div_bottoni_carrello.appendChild(div_bottone_meno);
-
+        
         let quantita = document.createElement("span");
         quantita.innerHTML= "Quantità: "+prod.quantita;
-       
         prodotto.setAttribute("class","pro");
         prodotto.appendChild(div_immagine);
         prodotto.appendChild(titolo);
@@ -587,14 +594,22 @@ function printCarll(){
     prezzo= document.createElement("span");
     prezzo.innerHTML = prezzo_totale;
     div.appendChild(div_prezzo);
+    btn_compra.value = "COMPRA " +prezzo_totale +" €";
 }
 
 function CloseCarll(){
+    let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
+    let prezzo_carrello = 0;
+    for (let i = 0; i < carrello_salvato.length; i++) {
+        prezzo_carrello += carrello_salvato[i].somma_costi
+    }
+    let data_acquisto = new Date().toLocaleString();
     if (sessionStorage.length <= 2 ) {
-        let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
         let carrl = {
             "nome": "carrello_"+(lista_carrelli.length),
-            "elementi": carrello_salvato
+            "elementi": carrello_salvato,
+            "data": data_acquisto,
+            "prezzo":prezzo_carrello +" €",
         }
         lista_carrelli.push(carrl);
         sessionStorage.setItem("lista_carrelli",JSON.stringify(lista_carrelli));
@@ -603,11 +618,12 @@ function CloseCarll(){
         location.reload();
     }
     else {
-        let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
         lista_carrelli = JSON.parse(sessionStorage.getItem("lista_carrelli"));
         let carrl = {
             "nome": "carrello_"+ (lista_carrelli.length),
-            "elementi": carrello_salvato
+            "elementi": carrello_salvato,
+            "data": data_acquisto,
+            "prezzo":prezzo_carrello+" €",
         }
         lista_carrelli.push(carrl);
         sessionStorage.setItem("lista_carrelli",JSON.stringify(lista_carrelli));
@@ -615,5 +631,4 @@ function CloseCarll(){
         sessionStorage.setItem("carrello",JSON.stringify(carrello_salvato));
         location.reload();
     }
-    
 }
