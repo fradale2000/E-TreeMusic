@@ -20,6 +20,10 @@ window.onclick = function(event)
 
 function caricamento(){
     let cont_new = 0;
+    if (sessionStorage.length >= 2) {
+        carrello_attuale =  JSON.parse(sessionStorage.getItem("carrello"));
+    }
+    
     while (localStorage.getItem('song_'+cont_new)!= null){
         lista_prodotti.push(JSON.parse(localStorage.getItem('song_'+cont_new)));
         cont_new++;
@@ -135,7 +139,6 @@ function caricamento(){
         //salvo tutto nel localstorage
     var div = document.getElementById("div_prodotti");
 
-    // localStorage.setItem("lista_prodotti" +cont_tot,JSON.stringify(lista_prodotti));
     console.log(lista_prodotti);
     //ciclo per creare tutti gli oggetti nella pagina in maniera dinamica
     for (let i = 0; i < localStorage.length; i++) {  //-------------------------6546415649/867465
@@ -299,7 +302,15 @@ function caricamento(){
             prodotto.appendChild(div_bottone);
             div.appendChild(prodotto);
         }
+ 
     }
+    if (sessionStorage.length >= 2) {
+        for (let i = 0; i < carrello_attuale.length; i++) {
+            cont_elem_carrello += carrello_attuale[i].quantita;
+        }
+        elem_carrello.innerHTML = cont_elem_carrello;
+    }
+    
 }
 
 //--------------------------------------------------------------------QUI
@@ -462,6 +473,7 @@ function SetLocal(carrello_attuale,lista_prodotti,prodotto){
 function printCarll(){
     var div = document.getElementById("record_carrello");
     let carrello_salvato =  JSON.parse(sessionStorage.getItem("carrello"));
+    var elem_carrello = document.getElementById("cont_carrello");
     let prezzo_totale = 0;
     let cont_new = 0;
     while (localStorage.getItem('song_'+cont_new)!= null){
@@ -471,6 +483,7 @@ function printCarll(){
     for (let i = 0; i < carrello_salvato.length; i++) {
         cont_elem_carrello += carrello_salvato[i].quantita;
     }
+    elem_carrello.innerHTML = cont_elem_carrello;
     for (let i = 0; i < carrello_salvato.length; i++){
         var prod = carrello_salvato[i];
         let prodotto = document.createElement("div");
