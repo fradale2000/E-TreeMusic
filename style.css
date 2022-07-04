@@ -28,6 +28,7 @@ html{
   justify-content:space-between;
   height: 10%;
   position: sticky;
+  z-index: 999;
   /* background-color: black; */
   background-color:  #f9f9f9;
 }
