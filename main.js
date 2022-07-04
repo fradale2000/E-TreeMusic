@@ -686,7 +686,8 @@ function reportCart(){
 
                 Single.setAttribute("id",cart.nome);
 
-
+                let quantita = document.createElement("span");
+                quantita.innerHTML= "Quantità: "+prod.quantita;
                 let div_immagine = document.createElement("div");
                 let immagine = document.createElement("img");
                 immagine.setAttribute("src",prod.src);
@@ -698,6 +699,7 @@ function reportCart(){
 
                 report.appendChild(div_immagine);
                 report.appendChild(titolo);
+                report.appendChild(quantita);
                 prodotto.setAttribute("class" , "Report" );
                 prodotto.appendChild(report);
                 Single.appendChild(prodotto);
@@ -711,30 +713,5 @@ function reportCart(){
         
     }
 
-//     for (let i = (localStorage.length-1); i > (localStorage.length-6); i--){
-//         var prod = JSON.parse(localStorage.getItem("song_"+i));   
-//         console.log(prod);
-//         //creo un div per inserire la canzone in maniera dinamica
-//         let prodotto = document.createElement("div");
-//         let last = document.createElement("div");
-//         //aggiungo la classe song
-//         prodotto.classList.add("song");
-//         last.classList.add("last");
-//         //aggiungo un'id
-//         prodotto.setAttribute("id",prod.IDProd);
-//         let div_immagine = document.createElement("div");
-//         let immagine = document.createElement("img");
-//         immagine.setAttribute("src",prod.src);
-//         immagine.classList.add("immagine");
-//         div_immagine.classList.add("div_immagine");
-//         div_immagine.appendChild(immagine);
-//         let titolo = document.createElement("span");
-//         titolo.innerHTML= prod.Titolo;
-//         last.appendChild(div_immagine);
-//         last.appendChild(titolo);
-//         prodotto.setAttribute("class" , "ultime_aggiunte" );
-//         prodotto.appendChild(last);
-//         div.appendChild(prodotto);
-// }
 
 }
