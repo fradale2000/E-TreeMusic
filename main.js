@@ -380,15 +380,15 @@ function add(){//funzione per aggiunta di brano
     }
 }
 //-----------------------------------------------------------------------------------------
-//     FILTRI DI RICERCA 
-function Search(){
+//     FILTRI DI RICERCA PRODOTTI
+function Search_prodotti(){
     let ART = document.getElementById("SArtista").value; // prendo il valore nella prima searchbar
     let ANNO = document.getElementById("SYear").value; // prendo il valore nella seconda searchbar
     let GEN = document.getElementById("SGenere").value; // prendo il valore nella terza searchbar
 
     if (ART=="" && ANNO=="" && GEN==""){ //SE TUTTE SONO VUOTE "BLOCK" A TUTTI I PRODOTTI
         for (let i = 0; i < lista_prodotti.length; i++) {
-            document.getElementById(i).style.display = "block";
+            document.getElementById(i).style.display = "flex";
             }
         }
     else{
@@ -396,7 +396,7 @@ function Search(){
             if(ART != "" && ANNO=="" && GEN==""){       //SE IL CAMPO ARTISTA NON è VUOTO E GLI ALTRI SI,ENTRA
                 // VECCHIO METODO           if(ART.toUpperCase() == (lista_prodotti[i].Artista).toUpperCase()){ 
                 if(((lista_prodotti[i].Artista).toUpperCase()).includes(ART.toUpperCase())){ 
-                                      document.getElementById(i).style.display = "block";   
+                                      document.getElementById(i).style.display = "flex";   
                                 }else{
                                     document.getElementById(i).style.display = "none";   
                                 } }
@@ -404,7 +404,7 @@ function Search(){
             if (ANNO != "" && ART =="" && GEN==""){              //SE IL CAMPO ANNO NON è VUOTO E GLI ALTRI SI,ENTRA
                 // VECCHIO METODO           if(ANNO.toUpperCase() == (lista_prodotti[i].Anno).toUpperCase()){ 
                     if(((lista_prodotti[i].Anno).toUpperCase()).includes(ANNO.toUpperCase())){     
-                                    document.getElementById(i).style.display = "block";   
+                                    document.getElementById(i).style.display = "flex";   
                             }else{ 
                                     document.getElementById(i).style.display = "none";
                                 } 
@@ -413,7 +413,7 @@ function Search(){
             if(GEN != "" && ANNO=="" && ART==""){                //SE IL CAMPO GENERE NON è VUOTO E GLI ALTRI SI,ENTRA               
                 // VECCHIO METODO           if(GEN.toUpperCase() == (lista_prodotti[i].Genere).toUpperCase()){
                     if(((lista_prodotti[i].Genere).toUpperCase()).includes(GEN.toUpperCase())){    
-                                    document.getElementById(i).style.display = "block";   
+                                    document.getElementById(i).style.display = "flex";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
                                 }
@@ -422,7 +422,7 @@ function Search(){
             if(ART != "" && ANNO != "" && GEN == ""){           //SE IL CAMPO ARTISTA E ANNO NON SONO VUOTI ENTRA
                 // VECCHIO METODO           if(ART.toUpperCase() == (lista_prodotti[i].Artista).toUpperCase() && ANNO.toUpperCase() == (lista_prodotti[i].Anno).toUpperCase()){ 
                 if(((lista_prodotti[i].Artista).toUpperCase()).includes(ART.toUpperCase())&&((lista_prodotti[i].Anno).toUpperCase()).includes(ANNO.toUpperCase())){   
-                                    document.getElementById(i).style.display = "block";   
+                                    document.getElementById(i).style.display = "flex";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
                                 }
@@ -431,7 +431,7 @@ function Search(){
             if(ART != "" && ANNO == "" && GEN != ""){      //SE IL CAMPO ARTISTA E GENERE NON SONO VUOTI ENTRA
                 // VECCHIO METODO           if(ART.toUpperCase() == (lista_prodotti[i].Artista).toUpperCase() && GEN.toUpperCase() == (lista_prodotti[i].Genere).toUpperCase()){ 
                 if(((lista_prodotti[i].Artista).toUpperCase()).includes(ART.toUpperCase())&&((lista_prodotti[i].Genere).toUpperCase()).includes(GEN.toUpperCase())){   
-                                    document.getElementById(i).style.display = "block";   
+                                    document.getElementById(i).style.display = "flex";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
                                     }
@@ -440,7 +440,7 @@ function Search(){
             if(ART == "" && ANNO != "" && GEN != ""){      //SE IL CAMPO ANNO E GENERE NON SONO VUOTI ENTRA
                 // VECCHIO METODO           if(ANNO.toUpperCase() == (lista_prodotti[i].Anno).toUpperCase() && GEN.toUpperCase() == (lista_prodotti[i].Genere).toUpperCase()){
                 if(((lista_prodotti[i].Anno).toUpperCase()).includes(ANNO.toUpperCase())&&((lista_prodotti[i].Genere).toUpperCase()).includes(GEN.toUpperCase())){
-                                    document.getElementById(i).style.display = "block";   
+                                    document.getElementById(i).style.display = "flex";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
                                     }
@@ -449,7 +449,7 @@ function Search(){
             if(ART != "" && ANNO != "" && GEN != ""){      //SE TUTTI I CAMPI NON SONO VUOTI,ENTRA
                 // VECCHIO METODO           if(ART.toUpperCase() == (lista_prodotti[i].Artista).toUpperCase() && ANNO.toUpperCase() == (lista_prodotti[i].Anno).toUpperCase() && GEN.toUpperCase() == (lista_prodotti[i].Genere).toUpperCase()){
                   if(((lista_prodotti[i].Artista).toUpperCase()).includes(ART.toUpperCase())&&((lista_prodotti[i].Anno).toUpperCase()).includes(ANNO.toUpperCase())&&((lista_prodotti[i].Genere).toUpperCase()).includes(GEN.toUpperCase())){    
-                                    document.getElementById(i).style.display = "block";   
+                                    document.getElementById(i).style.display = "flex";   
                             }else{
                                     document.getElementById(i).style.display = "none";   
                                     }
@@ -458,7 +458,87 @@ function Search(){
         }//chiusura FOR
     }//chiusura ELSE
 }//chiusura FUNZIONE
+//-----------------------------------------------------------------------------------------
+//     FILTRI DI RICERCA CARRELLO
+function Search_carrello(){
+    let ART = document.getElementById("SArtista").value; // prendo il valore nella prima searchbar
+    let ANNO = document.getElementById("SYear").value; // prendo il valore nella seconda searchbar
+    let GEN = document.getElementById("SGenere").value; // prendo il valore nella terza searchbar
+    //scarico il carrello salvato
+    let carrello_salvato = JSON.parse(sessionStorage.getItem("carrello"));
 
+    if (ART=="" && ANNO=="" && GEN==""){ //SE TUTTE SONO VUOTE "flex" A TUTTI I PRODOTTI
+        for (let i = 0; i < carrello_salvato.length; i++) {
+            document.getElementById(i).style.display = "flex";
+            }
+        }
+    else{
+        for (let i = 0; i < carrello_salvato.length; i++) {
+            if(ART != "" && ANNO=="" && GEN==""){       //SE IL CAMPO ARTISTA NON è VUOTO E GLI ALTRI SI,ENTRA
+                // VECCHIO METODO           if(ART.toUpperCase() == (carrello_salvato[i].Artista).toUpperCase()){ 
+                if(((carrello_salvato[i].Artista).toUpperCase()).includes(ART.toUpperCase())){ 
+                                      document.getElementById(i).style.display = "flex";   
+                                }else{
+                                    document.getElementById(i).style.display = "none";   
+                                } }
+
+            if (ANNO != "" && ART =="" && GEN==""){              //SE IL CAMPO ANNO NON è VUOTO E GLI ALTRI SI,ENTRA
+                // VECCHIO METODO           if(ANNO.toUpperCase() == (carrello_salvato[i].Anno).toUpperCase()){ 
+                    if(((carrello_salvato[i].Anno).toUpperCase()).includes(ANNO.toUpperCase())){     
+                                    document.getElementById(i).style.display = "flex";   
+                            }else{ 
+                                    document.getElementById(i).style.display = "none";
+                                } 
+                            }
+
+            if(GEN != "" && ANNO=="" && ART==""){                //SE IL CAMPO GENERE NON è VUOTO E GLI ALTRI SI,ENTRA               
+                // VECCHIO METODO           if(GEN.toUpperCase() == (carrello_salvato[i].Genere).toUpperCase()){
+                    if(((carrello_salvato[i].Genere).toUpperCase()).includes(GEN.toUpperCase())){    
+                                    document.getElementById(i).style.display = "flex";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                }
+                        }
+
+            if(ART != "" && ANNO != "" && GEN == ""){           //SE IL CAMPO ARTISTA E ANNO NON SONO VUOTI ENTRA
+                // VECCHIO METODO           if(ART.toUpperCase() == (carrello_salvato[i].Artista).toUpperCase() && ANNO.toUpperCase() == (carrello_salvato[i].Anno).toUpperCase()){ 
+                if(((carrello_salvato[i].Artista).toUpperCase()).includes(ART.toUpperCase())&&((carrello_salvato[i].Anno).toUpperCase()).includes(ANNO.toUpperCase())){   
+                                    document.getElementById(i).style.display = "flex";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                }
+                            }
+
+            if(ART != "" && ANNO == "" && GEN != ""){      //SE IL CAMPO ARTISTA E GENERE NON SONO VUOTI ENTRA
+                // VECCHIO METODO           if(ART.toUpperCase() == (carrello_salvato[i].Artista).toUpperCase() && GEN.toUpperCase() == (carrello_salvato[i].Genere).toUpperCase()){ 
+                if(((carrello_salvato[i].Artista).toUpperCase()).includes(ART.toUpperCase())&&((carrello_salvato[i].Genere).toUpperCase()).includes(GEN.toUpperCase())){   
+                                    document.getElementById(i).style.display = "flex";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                    }
+                            }
+                            
+            if(ART == "" && ANNO != "" && GEN != ""){      //SE IL CAMPO ANNO E GENERE NON SONO VUOTI ENTRA
+                // VECCHIO METODO           if(ANNO.toUpperCase() == (carrello_salvato[i].Anno).toUpperCase() && GEN.toUpperCase() == (carrello_salvato[i].Genere).toUpperCase()){
+                if(((carrello_salvato[i].Anno).toUpperCase()).includes(ANNO.toUpperCase())&&((carrello_salvato[i].Genere).toUpperCase()).includes(GEN.toUpperCase())){
+                                    document.getElementById(i).style.display = "flex";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                    }
+                            }     
+                            
+            if(ART != "" && ANNO != "" && GEN != ""){      //SE TUTTI I CAMPI NON SONO VUOTI,ENTRA
+                // VECCHIO METODO           if(ART.toUpperCase() == (carrello_salvato[i].Artista).toUpperCase() && ANNO.toUpperCase() == (carrello_salvato[i].Anno).toUpperCase() && GEN.toUpperCase() == (carrello_salvato[i].Genere).toUpperCase()){
+                  if(((carrello_salvato[i].Artista).toUpperCase()).includes(ART.toUpperCase())&&((carrello_salvato[i].Anno).toUpperCase()).includes(ANNO.toUpperCase())&&((carrello_salvato[i].Genere).toUpperCase()).includes(GEN.toUpperCase())){    
+                                    document.getElementById(i).style.display = "flex";   
+                            }else{
+                                    document.getElementById(i).style.display = "none";   
+                                    }
+                            }    
+
+        }//chiusura FOR
+    }//chiusura ELSE
+}//chiusura FUNZIONE
 //FINE FILTRI
 //--------------------------------------------------------------------------------------------
 //funzione per settare nel SessionStorage il carrello aggiornato
@@ -525,8 +605,8 @@ function printCarll(){ //funzione per stampare il contenuto del carrello
         somma.value = prod.Costo * prod.quantita;
         somma.value.toFixed(2);
         somma.innerHTML = somma.value;
-        prod.somma_costi = parseFloat(somma.value);
-        prezzo_totale += parseFloat(somma.value);
+        prod.somma_costi = parseFloat(somma.value.toFixed(2));
+        prezzo_totale += parseFloat(somma.value.toFixed(2));
         //div per distanziare i bottoni del carrello
         let div_bottoni_carrello = document.createElement("div_bottoni_carrello");
         div_bottoni_carrello.classList.add("div_bottoni_carrello");
