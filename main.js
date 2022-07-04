@@ -504,6 +504,8 @@ function printCarll(){ //funzione per stampare il contenuto del carrello
         var prod = carrello_salvato[i];
         let prodotto = document.createElement("div");
         prodotto.setAttribute("id",prod.IDProd);
+        prodotto.style.backgroundColor= "white";
+        prodotto.style.opacity= "0.9";
         //immagine
         let div_immagine = document.createElement("div");
         let immagine = document.createElement("img");
@@ -524,7 +526,7 @@ function printCarll(){ //funzione per stampare il contenuto del carrello
         let somma = document.createElement("span");
         somma.value = prod.Costo * prod.quantita;
         somma.value.toFixed(2);
-        somma.innerHTML = somma.value;
+        somma.innerHTML = somma.value.toFixed(2);
         prod.somma_costi = parseFloat(somma.value.toFixed(2));
         prezzo_totale += parseFloat(somma.value.toFixed(2));
         //div per distanziare i bottoni del carrello
@@ -596,7 +598,7 @@ function printCarll(){ //funzione per stampare il contenuto del carrello
         div_bottoni_carrello.appendChild(div_bottone_meno);
         
         let quantita = document.createElement("span");
-        quantita.innerHTML= "Quantità: "+prod.quantita;
+        quantita.innerHTML= "Quantità: "+ prod.quantita;
         prodotto.setAttribute("class","pro");
         prodotto.appendChild(div_immagine);                        
         prodotto.appendChild(titolo);
@@ -649,7 +651,6 @@ function CloseCarll(){
 
 // --------------------------------------------------------------------------------------
 //                                REPORT CARRELLI
-
 function reportCart(){
     let div = document.getElementById("Reportlist");
 
@@ -657,7 +658,7 @@ function reportCart(){
     console.log(carts_list);
     for(let i=0; i <carts_list.length;i++){
             let cart = carts_list[i];  
-            console.log("---------")  ;
+            console.log("---------");
             let info = document.createElement("div");//div per tutte le info sul carrello
             let nome = document.createElement("span");
             nome.innerHTML="Nome: "+ cart.nome;
@@ -712,6 +713,12 @@ function reportCart(){
             div.appendChild(Single);
         
     }
+}
+window.onscroll = function () {
+    scrollRotate();
+};
 
-
+function scrollRotate() {
+    let image = document.getElementById("vinilesfondo");
+    image.style.transform = "rotate(" + window.pageYOffset/2 + "deg)";
 }
