@@ -431,9 +431,9 @@ position: relative;
   padding: 10px 0 10px 15px;
   font-family: "Open Sans", sans;
   font-weight: 400;
-  color: #377d6a;
-  background: #a4e8a0;
+  background: #c2e4c1;
   border: 1;
-  border-color: rgb(54, 105, 28);
+  border-color: rgb(57, 172, 0);
   border-radius: 3px;
+  opacity: 0.9;
 }
