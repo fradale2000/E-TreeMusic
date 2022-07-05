@@ -129,8 +129,6 @@ function caricamento(){
         cont_prod ++;
         //salvo tutto nel localstorage
     var div = document.getElementById("div_prodotti");
-
-    console.log(lista_prodotti);
     //ciclo per creare tutti gli oggetti nella pagina in maniera dinamica
     for (let i = 0; i < localStorage.length; i++) {
         if(localStorage.getItem('song_'+i)<lista_prodotti.length){
@@ -138,7 +136,6 @@ function caricamento(){
         }
         else{
             var prod = JSON.parse(localStorage.getItem("song_"+i));   
-            console.log(prod);
             //creo un div per inserire la canzone in maniera dinamica
             let prodotto = document.createElement("div");
             let div_cliccabile = document.createElement("div");
@@ -221,7 +218,6 @@ function caricamento(){
                     }
                     cont_elem_carrello++;
                     elem_carrello.innerHTML = cont_elem_carrello;
-                    console.log(carrello_attuale);
                     
                 });
                 //append di tutti gli elementi
@@ -282,7 +278,6 @@ function caricamento(){
                 }
                 cont_elem_carrello++;
                 elem_carrello.innerHTML = cont_elem_carrello;
-                console.log(carrello_attuale);
                 
             });
             //appendo tutto nel div "div_prodotto"
@@ -312,7 +307,6 @@ function lastAdded(){ //funzione per la lista degli ultimi brani aggiunti
     let div = document.getElementById("lista_ultime_aggiunte");
         for (let i = (localStorage.length-1); i > (localStorage.length-6); i--){
             var prod = JSON.parse(localStorage.getItem("song_"+i));   
-            console.log(prod);
             //creo un div per inserire la canzone in maniera dinamica
             let prodotto = document.createElement("div");
             let last = document.createElement("div");
@@ -555,7 +549,6 @@ function printCarll(){ //funzione per stampare il contenuto del carrello
                 location.reload();
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             }
-            console.log(carrello);
             cont_elem_carrello++;
             elem_carrello.innerHTML = cont_elem_carrello;
         });
@@ -590,7 +583,6 @@ function printCarll(){ //funzione per stampare il contenuto del carrello
                 location.reload();
                 SetLocal(carrello_salvato,lista_prodotti,prodotto);
             }
-            console.log(carrello);
             cont_elem_carrello--;
             elem_carrello.innerHTML = cont_elem_carrello;
         });
@@ -655,10 +647,8 @@ function reportCart(){
     let div = document.getElementById("Reportlist");
 
     let carts_list = JSON.parse(sessionStorage.getItem('lista_carrelli'));
-    console.log(carts_list);
     for(let i=0; i <carts_list.length;i++){
             let cart = carts_list[i];  
-            console.log("---------");
             let info = document.createElement("div");//div per tutte le info sul carrello
             let nome = document.createElement("span");
             nome.innerHTML="Nome: "+ cart.nome;
@@ -669,15 +659,12 @@ function reportCart(){
             info.style.display = "flex";  
             info.style.margin= "1%";
             info.style.padding= "2%";
-            var Single = document.createElement("div");               //console.log(carts_list[i]);//singoli carrelli
+            var Single = document.createElement("div");
             for(let y=0; y < (cart.elementi.length) ; y++){
-                let prod = (cart.elementi[y]);
-                console.log(prod);
-                
+                let prod = (cart.elementi[y]);                
                 let prodotto = document.createElement("div");
                 let report = document.createElement("div");
                 
-
                 //aggiungo la classe song
                 prodotto.classList.add("song");
                 report.classList.add("report");
@@ -704,7 +691,6 @@ function reportCart(){
                 prodotto.setAttribute("class" , "Report" );
                 prodotto.appendChild(report);
                 Single.appendChild(prodotto);
-                console.log(Single);
             }
             info.appendChild(nome);
             info.appendChild(data);
